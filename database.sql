@@ -1,21 +1,24 @@
 -- drop database db;
 -- create database db;
---drop table user;
+-- drop table user;
+
 use db;
 
-CREATE TABLE usr_user (
-    usr_id INTEGER NOT NULL AUTO_INCREMENT,
-    usr_name VARCHAR(40) NOT NULL,
-    usr_password VARCHAR(200) NOT NULL,
-    Primary key(usr_id)
+CREATE TABLE user (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    username VARCHAR(40) NOT NULL,
+    password VARCHAR(200) NOT NULL,
+    Primary key(id)
 );
 
-CREATE TABLE ctg_category (
-	ctg_id INTEGER NOT NULL AUTO_INCREMENT,
-    cat_title VARCHAR(255) NOT NULL,
-    Primary key(ctg_id)
+CREATE TABLE category (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    Primary key(id)
 );
 
+--SELECT * FROM `category`;
+--INSERT INTO category SET id = 2, title = 'Bootstrap';
 
 
 
