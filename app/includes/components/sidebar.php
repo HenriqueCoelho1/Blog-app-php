@@ -1,8 +1,18 @@
 <div class="col-md-4">
                 <?php
-                // $submitPost = $_POST['submit'];
+                
                 if(isset($_POST['submit'])){
-                    echo $searchPost = $_POST['search'];
+                    $search = $_POST['search'];
+                    $query = "SELECT * FROM post WHERE tags LIKE '%$search%' ";
+                    $search_query = mysqli_query($connection, $query);
+
+                    if(!$search_query){
+                        die("QUERY FAILED " . mysqli_error($connection));
+                    }
+                    $count = mysqli_num_rows($search_query);
+                    if($count == 0){
+                        echo "<h1>No result! </h1>";
+                    }
                 }
                 
                 ?>
