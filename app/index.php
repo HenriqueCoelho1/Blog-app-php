@@ -25,7 +25,7 @@
                     $post_content = $row['content'];
                     $post_title = $row['title'];
                     
-                    echo "<li><a href='#'>{$post_title}</a></li>";
+                    
             ?>
                 <h1 class="page-header">
                     Page Heading
@@ -41,7 +41,7 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_dh_insert;?></p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="">
                 <hr>
                 <p><?php echo $post_content;?></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
