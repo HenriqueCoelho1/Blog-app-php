@@ -1,7 +1,6 @@
 <?php include "includes/components/header.php";?>
 
     <div id="wrapper"> 
-        
         <?php include "includes/components/nav.php";?>
         
 
@@ -16,6 +15,19 @@
                             Welcome to Admin
                             <small>Author</small>
                         </h1>
+                        <div class="col-xs-6">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="cat-title">Add a Category</label>
+                                    <input class="form-control" type="text" name="cat_title" id="" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Add a Category" />
+                                </div>
+                            
+                            </form>
+                        </div>
+                        
                         
                     </div>
                 </div>
