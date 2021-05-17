@@ -48,28 +48,31 @@
 
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="category_title">Update a Category</label>
+                                    <label for="category_title">Edit a Category</label>
 
                                     <?php
                                     if(isset($_GET['edit'])){
                                         $category_id = $_GET['edit'];
-                                        $queryEdit = "SELECT * FROM category WHERE id = $category_id ";
-                                        $select_categories_edit =  mysqli_query($connection, $queryEdit);
+                                        $query_edit = "SELECT * FROM category WHERE id = $category_id ";
+                                        $select_categories_edit =  mysqli_query($connection, $query_edit);
                                         while($row = mysqli_fetch_assoc($select_categories_edit)){
-                                        $category_id = $row['id'];
-                                        $category_title = $row['title'];
+                                            $category_id = $row['id'];
+                                            $category_title = $row['title'];
                                     ?>
-                                    <input class="form-control" 
+
+                                    
+                                    <input value="<?php if(isset($category_title)){echo $category_title;} ?>"
+                                    class="form-control" 
                                     type="text" 
-                                    name="category_title" 
-                                    value="<?php if(isset($category_title)) {echo $category_title;} ?>" />
+                                    name="category_title" />
                                     <?php
-                                    }}
+                                        }
+                                    }
                                     ?>
                                     
                                 </div>
                                 <div class="form-group">
-                                    <input class="btn btn-primary" type="submit" name="submit" value="Update" />
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Edit a Category" />
                                 </div>
                             </form>
 
@@ -79,7 +82,7 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Category Title</th>
+                                        <th>Title</th>
                                     </tr>
                                 </thead>
                                 <tbody>
