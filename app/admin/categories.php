@@ -44,8 +44,35 @@
                                 <div class="form-group">
                                     <input class="btn btn-primary" type="submit" name="submit" value="Add a Category" />
                                 </div>
-                            
                             </form>
+
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="category_title">Update a Category</label>
+
+                                    <?php
+                                    if(isset($_GET['edit'])){
+                                        $category_id = $_GET['edit'];
+                                        $queryEdit = "SELECT * FROM category WHERE id = $category_id ";
+                                        $select_categories_edit =  mysqli_query($connection, $queryEdit);
+                                        while($row = mysqli_fetch_assoc($select_categories_edit)){
+                                        $category_id = $row['id'];
+                                        $category_title = $row['title'];
+                                    ?>
+                                    <input class="form-control" 
+                                    type="text" 
+                                    name="category_title" 
+                                    value="<?php if(isset($category_title)) {echo $category_title;} ?>" />
+                                    <?php
+                                    }}
+                                    ?>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Update" />
+                                </div>
+                            </form>
+
                         </div>
                         <div class="col-xs-6">
                             <table class="table table-bordered table-hover">
@@ -66,6 +93,7 @@
                                     echo "<td>{$category_id}</td>";
                                     echo "<td>{$category_title}</td>";
                                     echo "<td><a href='categories.php?delete={$category_id}'>Delete</a></td>";
+                                    echo "<td><a href='categories.php?edit={$category_id}'>Edit</a></td>";
                                     echo "</tr>";
                                 }
                                 ?>
