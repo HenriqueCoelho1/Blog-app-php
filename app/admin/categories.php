@@ -17,15 +17,32 @@
                         </h1>
                         <div class="col-xs-6">
                             <?php
-                                $query = "SELECT * FROM category LIMIT 3";
-                                $select_categories =  mysqli_query($connection, $query);
+                            if(isset($_POST['submit'])){
+                                $category_title = $_POST['category_title'];
 
-                                
+                                if($category_title == "" || empty($category_title)){
+                                    echo "This field should not be empty";
+                                }else{
+                                    $query = "INSERT INTO category(title) ";
+                                    $query .= "VALUE('{$category_title}') ";
+                                    $create_category_query = mysqli_query($connection, $query);
+
+                                    if(!$create_category_query){
+                                        die('QUERY FAILED ' . mysqli_error($connection));
+                                    }
+
+                                }
+
+                            }   
+                            ?>
+                            <?php
+                            $query = "SELECT * FROM category";
+                            $select_categories =  mysqli_query($connection, $query);
                             ?>
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="cat-title">Add a Category</label>
-                                    <input class="form-control" type="text" name="cat_title" id="" />
+                                    <label for="category_title">Add a Category</label>
+                                    <input class="form-control" type="text" name="category_title" id="" />
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" type="submit" name="submit" value="Add a Category" />
