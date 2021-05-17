@@ -46,35 +46,12 @@
                                 </div>
                             </form>
 
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <label for="category_title">Edit a Category</label>
-
-                                    <?php
-                                    if(isset($_GET['edit'])){
-                                        $category_id = $_GET['edit'];
-                                        $query_edit = "SELECT * FROM category WHERE id = $category_id ";
-                                        $select_categories_edit =  mysqli_query($connection, $query_edit);
-                                        while($row = mysqli_fetch_assoc($select_categories_edit)){
-                                            $category_id = $row['id'];
-                                            $category_title = $row['title'];
-                                    ?>
-
-                                    
-                                    <input value="<?php if(isset($category_title)){echo $category_title;} ?>"
-                                    class="form-control" 
-                                    type="text" 
-                                    name="category_title" />
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <input class="btn btn-primary" type="submit" name="submit" value="Edit a Category" />
-                                </div>
-                            </form>
+                            <?php 
+                            if(isset($_GET['edit'])){
+                                $category_id = $_GET['edit'];
+                                include "includes/components/update_categories.php";
+                            } 
+                            ?>
 
                         </div>
                         <div class="col-xs-6">
