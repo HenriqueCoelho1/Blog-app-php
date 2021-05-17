@@ -35,10 +35,7 @@
 
                             }   
                             ?>
-                            <?php
-                            $query = "SELECT * FROM category";
-                            $select_categories =  mysqli_query($connection, $query);
-                            ?>
+                            
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="category_title">Add a Category</label>
@@ -60,14 +57,26 @@
                                 </thead>
                                 <tbody>
                                 <?php
+                                $query = "SELECT * FROM category";
+                                $select_categories =  mysqli_query($connection, $query);
                                 while($row = mysqli_fetch_assoc($select_categories)){
                                     $category_id = $row['id'];
                                     $category_title = $row['title'];
                                     echo "<tr>";
                                     echo "<td>{$category_id}</td>";
                                     echo "<td>{$category_title}</td>";
+                                    echo "<td><a href='categories.php?delete={$category_id}'>Delete</a></td>";
                                     echo "</tr>";
                                 }
+                                ?>
+
+                                <?php
+                                    if(isset($_GET['delete'])){
+                                        $delete_category_id = $_GET['delete'];
+                                        $query_delete = "DELETE FROM category WHERE id = {$delete_category_id}" ;
+                                        $delete_query = mysqli_query($connection, $query_delete);
+                                        header("Location: categories.php");
+                                    }
                                 ?>
                                 </tbody>
                             </table>
