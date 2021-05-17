@@ -1,7 +1,7 @@
-<?php include "includes/components/header.php";?>
+<?php include "includes/components/admin_header.php";?>
 
     <div id="wrapper"> 
-        <?php include "includes/components/nav.php";?>
+        <?php include "includes/components/admin_nav.php";?>
         
 
         <div id="page-wrapper">
@@ -16,6 +16,12 @@
                             <small>Author</small>
                         </h1>
                         <div class="col-xs-6">
+                            <?php
+                                $query = "SELECT * FROM category LIMIT 3";
+                                $select_categories =  mysqli_query($connection, $query);
+
+                                
+                            ?>
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="cat-title">Add a Category</label>
@@ -36,12 +42,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    <td>BBBBBBBBBBB</td>
-                                    <td>AAAAAAAAAAA</td>
-                                    <td>AAAAAAAAAAA</td>
-                                    <td>AAAAAAAAAAA</td>
-                                    </tr>
+                                <?php
+                                while($row = mysqli_fetch_assoc($select_categories)){
+                                    $category_id = $row['id'];
+                                    $category_title = $row['title'];
+                                    echo "<tr>";
+                                    echo "<td>{$category_id}</td>";
+                                    echo "<td>{$category_title}</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
@@ -57,4 +67,4 @@
         </div>
         <!-- /#page-wrapper -->
 
-        <?php include "includes/components/footer.php";?>  
+        <?php include "includes/components/admin_footer.php";?>  
