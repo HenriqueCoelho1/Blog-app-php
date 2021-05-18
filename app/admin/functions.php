@@ -47,4 +47,37 @@ function delete_category(){
         header("Location: categories.php");
     }
 }
+
+function find_all_posts(){
+    global $connection;
+
+    $query_post = "SELECT * FROM post";
+    $select_post =  mysqli_query($connection, $query_post);
+    while($row = mysqli_fetch_assoc($select_post)){
+        $post_id = $row['id'];
+        $post_title = $row['title'];
+        $post_author = $row['author'];
+        $post_dh_insert = $row['dh_insert'];
+        $post_image = $row['image'];
+        $post_content = $row['content'];
+        $post_tags = $row['tags'];
+        $post_comment_count = $row['comment_count'];
+        $post_status = $row['status'];
+        $post_category = $row['category'];
+        echo "<tr>";
+        echo "<td>{$post_id}</td>";
+        echo "<td>{$post_title}</td>";
+        echo "<td>{$post_author}</td>";
+        echo "<td>{$post_dh_insert}</td>";
+        echo "<td><img class='img-responsive' width='100' src='../images/{$post_image}' alt='images'></img></td>";
+        echo "<td>{$post_content}</td>";
+        echo "<td>{$post_tags}</td>";
+        echo "<td>{$post_comment_count}</td>";
+        echo "<td>{$post_status}</td>";
+        echo "<td>{$post_category}</td>";
+        echo "<td><a href='post.php?delete={$post_id}'>Delete</a></td>";
+        echo "<td><a href='post.php?edit={$post_id}'>Edit</a></td>";
+        echo "</tr>";
+    }
+}
 ?>

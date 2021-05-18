@@ -19,26 +19,21 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Author</th>
                                     <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Status</th>
-                                    <th>Image</th>
-                                    <th>Tags</th>
+                                    <th>Author</th>
                                     <th>Date</th>
+                                    <th>Image</th>
+                                    <th>Content</th>
+                                    <th>Tags</th>
+                                    <th>Comments</th>
+                                    <th>Status</th>
+                                    <th>Category</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>aaa</th>
-                                    <th>1212</th>
-                                    <th>aaaaa</th>
-                                    <th>222222</th>
-                                    <th>33333</th>
-                                    <th>44444</th>
-                                    <th>5555555</th>
-                                    <th>666666666</th>
-                                </tr>
+                                <?php find_all_posts();?>
+                                    
+                                
                             </tbody>
                         </table>
                         
