@@ -21,9 +21,11 @@
                         }else {
                             $source = '';
                         }
+                        $add_post = 'add_post';
+                        
                         switch($source){
-                            case '33':
-                            echo "Hello World!";
+                            case 'add_post':
+                            include "includes/components/add_posts.php";
                             break;
 
                             case '34':
