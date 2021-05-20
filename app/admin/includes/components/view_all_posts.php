@@ -21,4 +21,5 @@
 </table>
 
         <?php delete_post();?>
+        <?php display_post();?>
 

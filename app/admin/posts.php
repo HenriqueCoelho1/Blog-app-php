@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to Admin
+                            Welcome to Edit
                             <small>Author</small>
                         </h1>
                         <?php
@@ -28,8 +28,8 @@
                             include "includes/components/add_posts.php";
                             break;
 
-                            case '34':
-                            echo "Hello World!";
+                            case 'edit_post':
+                            include "includes/components/edit_posts.php";
                             break;
 
                             default:

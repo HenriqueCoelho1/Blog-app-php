@@ -86,7 +86,7 @@ function find_all_posts(){
         echo "<td>{$post_status}</td>";
         echo "<td>{$post_category}</td>";
         echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
-        echo "<td><a href='post.php?edit={$post_id}'>Edit</a></td>";
+        echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
         echo "</tr>";
     }
     
@@ -102,6 +102,30 @@ function delete_post(){
         header("Location: posts.php");
     }
     
+}
+
+function display_post(){
+    global $connection;
+
+    if(isset($_GET['p_id'])){
+        echo $_GET['p_id'];
+    }
+    $query_post = "SELECT * FROM post";
+    $select_post =  mysqli_query($connection, $query_post);
+    while($row = mysqli_fetch_assoc($select_post)){
+        $post_id = $row['id'];
+        $post_title = $row['title'];
+        $post_author = $row['author'];
+        $post_dh_insert = $row['dh_insert'];
+        $post_image = $row['image'];
+        $post_content = $row['content'];
+        $post_tags = $row['tags'];
+        $post_comment_count = $row['comment_count'];
+        $post_status = $row['status'];
+        $post_category = $row['category'];
+    }
+
+
 }
 
 
