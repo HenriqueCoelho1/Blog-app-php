@@ -57,6 +57,7 @@ function delete_category(){
     }
 }
 
+
 function find_all_posts(){
     global $connection;
 
@@ -84,9 +85,24 @@ function find_all_posts(){
         echo "<td>{$post_comment_count}</td>";
         echo "<td>{$post_status}</td>";
         echo "<td>{$post_category}</td>";
-        echo "<td><a href='post.php?delete={$post_id}'>Delete</a></td>";
+        echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
         echo "<td><a href='post.php?edit={$post_id}'>Edit</a></td>";
         echo "</tr>";
     }
+    
 }
+
+function delete_post(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $delete_post_id = $_GET['delete'];
+
+        $query_delete_post = "DELETE FROM post where id = {$delete_post_id} ";
+        $delete_query_post = mysqli_query($connection, $query_delete_post);
+        header("Location: posts.php");
+    }
+    
+}
+
+
 ?>

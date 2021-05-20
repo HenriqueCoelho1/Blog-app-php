@@ -19,3 +19,6 @@
         
     </tbody>
 </table>
+
+        <?php delete_post();?>
+
