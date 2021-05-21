@@ -2,7 +2,7 @@
 if(isset($_POST['create_post'])){
     $post_title = $_POST['title'];
     $post_author = $_POST['author'];
-    $post_category = $_POST['category_id'];
+    $post_category = $_POST['category'];
     $post_status = $_POST['status'];
 
     $post_image = $_FILES['image']['name'];
@@ -18,10 +18,6 @@ if(isset($_POST['create_post'])){
 
 
     $query = "INSERT INTO post(category, title, author, dh_insert, image, content, tags, comment_count, status) VALUES ({$post_category}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', {$post_comment_count}, '{$post_status}')";
-    // $query = "INSERT INTO post(category, title, author, dh_insert, image, ";
-    // $query .= "content, tags, comment_count, status) ";
-    // $query .= "VALUES ({$post_category}, '{$post_title}', '{$post_author}', '{$post_dh_insert}', '{$post_image}', ";
-    // $query .= "'{$post_content}', '{$post_tags}', {$post_comment_count}, '{$post_status}')";
     
     $create_post_query = mysqli_query($connection, $query);
 
@@ -38,7 +34,7 @@ if(isset($_POST['create_post'])){
     </div>
     <div class="form-group">
         <label for="post_category">Post Category</label>
-        <input type="text" class="form-control" name="category_id" />
+        <input type="text" class="form-control" name="category" />
     </div>
     <div class="form-group">
         <label for="author">Post Author</label>
