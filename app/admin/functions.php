@@ -84,7 +84,14 @@ function find_all_posts(){
         echo "<td>{$post_tags}</td>";
         echo "<td>{$post_comment_count}</td>";
         echo "<td>{$post_status}</td>";
-        echo "<td>{$post_category}</td>";
+        
+        $query_edit = "SELECT * FROM category WHERE id = {$post_category} ";
+        $select_categories_edit =  mysqli_query($connection, $query_edit);
+        while($row = mysqli_fetch_assoc($select_categories_edit)){
+            $category_id = $row['id'];
+            $category_title = $row['title'];
+            echo "<td>{$category_title}</td>";
+        }
         echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
         echo "</tr>";
