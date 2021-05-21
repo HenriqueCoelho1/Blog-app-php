@@ -57,9 +57,8 @@ if(isset($_POST['create_post'])){
         <input type="text" class="form-control" name="tags" />
     </div>
     <div class="form-group">
-        <label for="post_content">Post Author</label>
-        <textarea class="form-control" name="content" id="" cols="30" rows="10">
-        </textarea>
+        <label for="post_content">Post Content</label>
+        <textarea class="form-control" name="content" cols="30" rows="10" placeholder="Post a content"></textarea>
     </div>
 
     <div class="form-group">

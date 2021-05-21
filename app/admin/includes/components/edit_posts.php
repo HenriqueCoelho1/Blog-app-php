@@ -25,34 +25,48 @@ while($row = mysqli_fetch_assoc($select_post_by_id)){
 
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="title">Post Title</label>
+        <label for="title">Title</label>
         <input type="text" value="<?php echo $post_title; ?>" class="form-control" name="title" />
     </div>
     <div class="form-group">
-        <label for="post_category">Post Category</label>
-        <input type="text" value="<?php echo $post_category; ?>" class="form-control" name="category_id" />
+        <select name="" id="">
+        <?php
+        $query_display_category = "SELECT * FROM category";
+        $select_categories = mysqli_query($connection, $query_display_category);
+
+        confirm_query($select_categories);
+
+        echo "<option value=''>Select</option>";
+        while($row = mysqli_fetch_assoc($select_categories)){
+            $id = $row['id'];
+            $title = $row['title'];
+
+            echo "<option value='{$title}'>{$title}</option>";
+        }
+
+        ?>
+        </select>
+        
+        
     </div>
     <div class="form-group">
-        <label for="author">Post Author</label>
+        <label for="author">Author</label>
         <input type="text" value="<?php echo $post_author; ?>" class="form-control" name="author" />
     </div>
     <div class="form-group">
-        <label for="status">Post Status</label>
+        <label for="status">Status</label>
         <input type="text" value="<?php echo $post_status; ?>" class="form-control" name="status" />
     </div>
     <div class="form-group">
-        <label for="image">Post Image</label>
-        <input type="file" name="image" />
+        <img src="../upload/<?php echo $post_image; ?>" width="100" alt=""/>
     </div>
     <div class="form-group">
-        <label for="tags">Post Tags</label>
+        <label for="tags">Tags</label>
         <input type="text" value="<?php echo $post_tags; ?>" class="form-control" name="tags" />
     </div>
     <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <input type="text" value="<?php echo $post_content; ?>" class="form-control" name="content" />
-        <!-- <textarea class="form-control" value="" name="content" id="" cols="30" rows="10">
-        </textarea> -->
+        <label for="post_content">Content</label>
+        <textarea class="form-control" value="" name="content" id="" cols="30" rows="10"><?php echo $post_content;?></textarea>
     </div>
 
     <div class="form-group">
