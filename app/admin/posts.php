@@ -21,7 +21,6 @@
                         }else {
                             $source = '';
                         }
-                        $add_post = 'add_post';
                         
                         switch($source){
                             case 'add_post':
