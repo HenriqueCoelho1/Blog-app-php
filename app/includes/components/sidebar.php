@@ -22,16 +22,19 @@
                     <h4>Blog Categories</h4>
                     <div class="row">
                         <div class="col-lg-12">
+                            <ul class='list-unstyled'>
                             <?php
-                            $query = "SELECT * FROM category LIMIT 3";
+                            $query = "SELECT * FROM category";
                             $select_category_sidebar =  mysqli_query($connection, $query);
 
                             while($row = mysqli_fetch_assoc($select_category_sidebar)){
                                 $category_title = $row['title'];
-                                echo "<li><a href='#'>{$category_title}</a></li>";
+                                $category_id = $row['id'];
+                                echo "<li><a href='category.php?category={$category_id}'>{$category_title}</a></li>";
 
                             }
                             ?>
+                            </ul>
                         </div>
                         
                         
