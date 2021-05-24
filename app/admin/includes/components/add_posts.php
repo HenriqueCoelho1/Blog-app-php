@@ -11,13 +11,12 @@ if(isset($_POST['create_post'])){
     $post_tags = $_POST['tags'];
     $post_content = $_POST['content'];
     $post_dh_insert = date('dd-mmm-yyyy');
-    $post_comment_count = 4;
 
 
     move_uploaded_file($post_image_temp, "../upload/$post_image");
 
 
-    $query = "INSERT INTO post(category, title, author, dh_insert, image, content, tags, comment_count, status) VALUES ({$post_category}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', {$post_comment_count}, '{$post_status}')";
+    $query = "INSERT INTO post(category, title, author, dh_insert, image, content, tags, status) VALUES ({$post_category}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_status}')";
     
     $create_post_query = mysqli_query($connection, $query);
 

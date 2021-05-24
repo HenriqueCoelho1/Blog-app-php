@@ -155,7 +155,7 @@ function find_all_comments(){
         echo "<td>{$comment_status}</td>";
         echo "<td>{$comment_dh_insert}</td>";
 
-        $query_post_comment = "SELECT * FROM post WHERE $comment_post LIMIT 1 ";
+        $query_post_comment = "SELECT * FROM post WHERE id = $comment_post ";
         $select_post_id_query = mysqli_query($connection, $query_post_comment);
         while($row = mysqli_fetch_assoc($select_post_id_query)){
             $post_id = $row['id'];
@@ -196,7 +196,7 @@ function unapprove_comment(){
     if(isset($_GET['unapprove'])){
         $unapprove_comment_id = $_GET['unapprove'];
 
-        $query_unapprove_comment = "UPDATE comment SET status = 'Unapprove' WHERE id = $unapprove_comment_id ";
+        $query_unapprove_comment = "UPDATE comment SET status = 'Unapproved' WHERE id = $unapprove_comment_id ";
         $select_unapprove_query_comment = mysqli_query($connection, $query_unapprove_comment);
         header("Location: comments.php");
     }
@@ -207,7 +207,7 @@ function approve_comment(){
     if(isset($_GET['approve'])){
         $unapprove_comment_id = $_GET['approve'];
 
-        $query_approve_comment = "UPDATE comment SET status = 'Approve' WHERE id = $unapprove_comment_id ";
+        $query_approve_comment = "UPDATE comment SET status = 'Approved' WHERE id = $unapprove_comment_id ";
         $select_approve_query_comment = mysqli_query($connection, $query_approve_comment);
         header("Location: comments.php");
     }

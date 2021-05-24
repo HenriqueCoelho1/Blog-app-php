@@ -63,10 +63,14 @@
                     $comment_content = $_POST['content'];
 
                     $query_comment = "INSERT INTO comment (post, author, email, content, status, dh_insert) ";
-                    $query_comment .= "VALUES ($selected_id_post, '$comment_author', '$comment_email', '$comment_content', 'unapproved', now() ) ";
+                    $query_comment .= "VALUES ($selected_id_post, '$comment_author', '$comment_email', '$comment_content', 'Unapproved', now() ) ";
 
                     $create_comment_query = mysqli_query($connection, $query_comment);
                     
+
+                    $query_comment_count = "UPDATE post SET comment_count = comment_count + 1 ";
+                    $query_comment_count .= "WHERE id = $selected_id_post ";
+                    $update_comment_count = mysqli_query($connection, $query_comment_count);
                     
                         
                 }
@@ -94,55 +98,36 @@
                 </div>
 
                 <hr>
-
                 
+
+                <?php
+                $query_comments_post = "SELECT * FROM comment WHERE post = {$selected_id_post} ";
+                $query_comments_post .= "AND status = 'Approved' ";
+                $query_comments_post .= "ORDER BY id DESC";
+                $select_comment_query = mysqli_query($connection, $query_comments_post);
+                if(!$select_comment_query){
+                    die("QUERY FAILED! " . mysqli_error($connection));
+                }
+                while($row = mysqli_fetch_array($select_comment_query)){
+                    $comment_dh_insert = $row['dh_insert'];
+                    $comment_content = $row['content'];
+                    $comment_author = $row['author'];
+                ?>
+
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading"><?php echo $comment_author; ?>
+                            <small><?php echo $comment_dh_insert; ?></small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <?php echo $comment_content; ?>
                     </div>
                 </div>
-
-                
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                
-
-                
-                
-                
-
-                
-                
-
+                <?php
+                }
+                ?>
             </div>
             <?php include "includes/components/sidebar.php";?>
             
