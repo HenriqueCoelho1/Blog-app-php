@@ -172,8 +172,8 @@ function find_all_comments(){
         //     echo "<td>{$category_title}</td>";
         // }
 
-        echo "<td><a href='posts.php?delete={$comment_post}'>Approve</a></td>";
-        echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Unapprove</a></td>";
+        echo "<td><a href='comments.php?approve={$comment_id}'>Approve</a></td>";
+        echo "<td><a href='comments.php?unapprove={$comment_id}'>Unapprove</a></td>";
         echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a></td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Edit</a></td>";
         echo "</tr>";
@@ -187,6 +187,28 @@ function delete_comment(){
 
         $query_delete_comment = "DELETE FROM comment where id = {$delete_comment_id} ";
         $select_delete_query_comment = mysqli_query($connection, $query_delete_comment);
+        header("Location: comments.php");
+    }
+}
+
+function unapprove_comment(){
+    global $connection;
+    if(isset($_GET['unapprove'])){
+        $unapprove_comment_id = $_GET['unapprove'];
+
+        $query_unapprove_comment = "UPDATE comment SET status = 'Unapprove' WHERE id = $unapprove_comment_id ";
+        $select_unapprove_query_comment = mysqli_query($connection, $query_unapprove_comment);
+        header("Location: comments.php");
+    }
+}
+
+function approve_comment(){
+    global $connection;
+    if(isset($_GET['approve'])){
+        $unapprove_comment_id = $_GET['approve'];
+
+        $query_approve_comment = "UPDATE comment SET status = 'Approve' WHERE id = $unapprove_comment_id ";
+        $select_approve_query_comment = mysqli_query($connection, $query_approve_comment);
         header("Location: comments.php");
     }
     

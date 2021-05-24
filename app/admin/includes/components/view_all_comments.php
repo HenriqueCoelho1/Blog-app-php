@@ -20,5 +20,6 @@
 </table>
 
         <?php delete_comment();?>
-        <?php display_post();?>
+        <?php approve_comment();?>
+        <?php unapprove_comment();?>
 
