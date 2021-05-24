@@ -131,6 +131,47 @@ function display_post(){
         $post_status = $row['status'];
         $post_category = $row['category'];
     }
+}
+
+
+function find_all_comments(){
+    global $connection;
+
+    $query_comment = "SELECT * FROM comment";
+    $select_comment =  mysqli_query($connection, $query_comment);
+    while($row = mysqli_fetch_assoc($select_comment)){
+        $comment_id = $row['id'];
+        $comment_author = $row['author'];
+        $comment_email = $row['email'];
+        $comment_content = $row['content'];
+        $comment_status = $row['status'];
+        $comment_dh_insert = $row['dh_insert'];
+        $comment_post = $row['post'];
+        echo "<tr>";
+        echo "<td>{$comment_id}</td>";
+        echo "<td>{$comment_author}</td>";
+        echo "<td>{$comment_email}</td>";
+        echo "<td>{$comment_content}</td>";
+        echo "<td>{$comment_status}</td>";
+        echo "<td>{$comment_dh_insert}</td>";
+        echo "<td>{$comment_post}</td>";
+        
+        
+        // $query_edit = "SELECT * FROM category WHERE id = {$comment_category} ";
+        // $select_categories_edit =  mysqli_query($connection, $query_edit);
+        // while($row = mysqli_fetch_assoc($select_categories_edit)){
+        //     $category_id = $row['id'];
+        //     $category_title = $row['title'];
+        //     echo "<td>{$category_title}</td>";
+        // }
+
+        echo "<td><a href='posts.php?delete={$comment_post}'>Approve</a></td>";
+        echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Unapprove</a></td>";
+        echo "<td><a href='posts.php?delete={$comment_post}'>Delete</a></td>";
+        echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Edit</a></td>";
+        echo "</tr>";
+    }
+    
 
 
 }

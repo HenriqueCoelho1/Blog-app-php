@@ -2,19 +2,18 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Title</th>
             <th>Author</th>
-            <th>Date</th>
-            <th>Image</th>
+            <th>Email</th>
             <th>Content</th>
-            <th>Tags</th>
-            <th>Comments</th>
             <th>Status</th>
-            <th>Category</th>
+            <th>Date</th>
+            <th>In Response To</th>
+            <th>Approve</th>
+            <th>Unapprove</th>
         </tr>
     </thead>
     <tbody>
-        <?php find_all_posts();?>
+        <?php find_all_comments();?>
             
         
     </tbody>
