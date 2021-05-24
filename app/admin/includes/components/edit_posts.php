@@ -86,9 +86,9 @@ if(isset($_POST['update_post'])){
 
         ?>
         </select>
-        
-        
+            
     </div>
+
     <div class="form-group">
         <label for="author">Author</label>
         <input type="text" value="<?php echo $post_author; ?>" class="form-control" name="author" />

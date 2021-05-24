@@ -69,7 +69,7 @@ function find_all_posts(){
         $post_author = $row['author'];
         $post_dh_insert = $row['dh_insert'];
         $post_image = $row['image'];
-        $post_content = $row['content'];
+        $post_content = substr($row['content'], 0, 50);
         $post_tags = $row['tags'];
         $post_comment_count = $row['comment_count'];
         $post_status = $row['status'];
