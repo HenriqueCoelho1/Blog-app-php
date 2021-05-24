@@ -56,7 +56,17 @@
                 <!-- Blog Comments -->
                 <?php
                 if(isset($_POST['create_comment'])){
-                    echo $_POST['comment_author'];
+                    $selected_id_post = $_GET['p_id'];
+
+                    $comment_author = $_POST['comment_author'];
+                    $comment_email = $_POST['comment_email'];
+                    $comment_content = $_POST['comment_content'];
+
+                    $query_comment = "INSERT INTO comment (post, author, email, content, status, dh_insert) ";
+                    $query_comment .= "VALUES ($selected_id_post, '$comment_author', '$comment_email', '$comment_content', 'unapproved', now() ) ";
+
+                    $create_comment_query = mysqli_query($connection, $query_comment);
+                    
                 }
                 ?>
                 <!-- Comments Form -->
