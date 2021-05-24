@@ -171,9 +171,14 @@ function find_all_comments(){
         echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Edit</a></td>";
         echo "</tr>";
     }
-    
+}
 
+function create_comment(){
+    // global $connection;
 
+    // if(isset($_POST['create_comment'])){
+    //     echo $_POST['comment_author'];
+    // }
 }
 
 
