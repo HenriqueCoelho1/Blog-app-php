@@ -58,15 +58,17 @@
                 if(isset($_POST['create_comment'])){
                     $selected_id_post = $_GET['p_id'];
 
-                    $comment_author = $_POST['comment_author'];
-                    $comment_email = $_POST['comment_email'];
-                    $comment_content = $_POST['comment_content'];
+                    $comment_author = $_POST['author'];
+                    $comment_email = $_POST['email'];
+                    $comment_content = $_POST['content'];
 
                     $query_comment = "INSERT INTO comment (post, author, email, content, status, dh_insert) ";
                     $query_comment .= "VALUES ($selected_id_post, '$comment_author', '$comment_email', '$comment_content', 'unapproved', now() ) ";
 
                     $create_comment_query = mysqli_query($connection, $query_comment);
                     
+                    
+                        
                 }
                 ?>
                 <!-- Comments Form -->
@@ -75,18 +77,17 @@
                     <form action="" method="post" role="form">
                         <div class="form-group">
                             <label for="author">Author</label>
-                            <input type="text" class="form-control" name="comment_author"  />
+                            <input type="text" class="form-control" name="author"  />
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="comment_email"  />
+                            <input type="email" class="form-control" name="email"  />
                         </div>
                         <div class="form-group">
                             <label for="comment">Your comment</label>
                             <textarea type="text" 
                             class="form-control" 
-                            value="create_comment" 
-                            name="create_comment"></textarea>
+                            name="content"></textarea>
                         </div>
                         <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
                     </form>
