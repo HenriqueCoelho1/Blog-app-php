@@ -154,7 +154,14 @@ function find_all_comments(){
         echo "<td>{$comment_content}</td>";
         echo "<td>{$comment_status}</td>";
         echo "<td>{$comment_dh_insert}</td>";
-        echo "<td>{$comment_post}</td>";
+
+        $query_post_comment = "SELECT * FROM post WHERE $comment_post LIMIT 1 ";
+        $select_post_id_query = mysqli_query($connection, $query_post_comment);
+        while($row = mysqli_fetch_assoc($select_post_id_query)){
+            $post_id = $row['id'];
+            $post_title = $row['title'];
+            echo "<td><a href='../post.php?p_id={$post_id}'>{$post_title}</a></td>";
+        }
         
         
         // $query_edit = "SELECT * FROM category WHERE id = {$comment_category} ";
@@ -167,10 +174,22 @@ function find_all_comments(){
 
         echo "<td><a href='posts.php?delete={$comment_post}'>Approve</a></td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Unapprove</a></td>";
-        echo "<td><a href='posts.php?delete={$comment_post}'>Delete</a></td>";
+        echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a></td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$comment_post}'>Edit</a></td>";
         echo "</tr>";
     }
+}
+
+function delete_comment(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $delete_comment_id = $_GET['delete'];
+
+        $query_delete_comment = "DELETE FROM comment where id = {$delete_comment_id} ";
+        $select_delete_query_comment = mysqli_query($connection, $query_delete_comment);
+        header("Location: comments.php");
+    }
+    
 }
 
 function create_comment(){
