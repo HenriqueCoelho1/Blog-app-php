@@ -11,6 +11,8 @@
             <th>Comments</th>
             <th>Status</th>
             <th>Category</th>
+            <th>Delete</th>
+            <th>Edit</th>
         </tr>
     </thead>
     <tbody>
