@@ -2,26 +2,26 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Date</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Is Admin</th>
             <th>Image</th>
-            <th>Content</th>
-            <th>Tags</th>
-            <th>Comments</th>
-            <th>Status</th>
-            <th>Category</th>
-            <th>Delete</th>
+            <th>Date</th>
             <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <?php find_all_posts();?>
+        <?php find_all_users();?>
             
         
     </tbody>
 </table>
 
+        <?php display_user();?>
         <?php delete_post();?>
-        <?php display_post();?>
+        
 

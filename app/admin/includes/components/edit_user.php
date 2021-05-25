@@ -1,10 +1,10 @@
 <?php
-if(isset($_GET['p_id'])){
-    $edit_post_by_id = $_GET['p_id'];
+if(isset($_GET['u_id'])){
+    $edit_user_by_id = $_GET['u_id'];
 }
 
-$query_single_post = "SELECT * FROM post where $edit_post_by_id ";
-$select_post_by_id =  mysqli_query($connection, $query_single_post);
+$query_single_user = "SELECT * FROM user where id = $edit_user_by_id ";
+$select_user_by_id =  mysqli_query($connection, $query_single_user);
 
 while($row = mysqli_fetch_assoc($select_post_by_id)){
     $post_id = $row['id'];

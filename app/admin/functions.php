@@ -214,12 +214,62 @@ function approve_comment(){
     
 }
 
-function create_comment(){
-    // global $connection;
+function find_all_users(){
+    global $connection;
 
-    // if(isset($_POST['create_comment'])){
-    //     echo $_POST['comment_author'];
-    // }
+    $query_user = "SELECT * FROM user";
+    $select_user =  mysqli_query($connection, $query_user);
+    while($row = mysqli_fetch_assoc($select_user)){
+        $user_id = $row['id'];
+        $user_username = $row['username'];
+        $user_email = $row['email'];
+        $user_password = $row['password'];
+        $user_firstname = $row['firstname'];
+        $user_lastname = $row['lastname'];
+        $user_is_superuser = $row['is_superuser'];
+        $user_image = $row['image'];
+        $user_dh_insert = $row['dh_insert'];
+        if($user_is_superuser == 0){
+            $is_admin = "No";
+        }else{
+            $is_admin = "Yes";
+        }
+        echo "<tr>";
+        echo "<td>{$user_id}</td>";
+        echo "<td>{$user_username}</td>";
+        echo "<td>{$user_email}</td>";
+        echo "<td>{$user_password}</td>";
+        echo "<td>{$user_firstname}</td>";
+        echo "<td>{$user_lastname}</td>";
+        echo "<td>{$is_admin}</td>";
+        echo "<td><img class='img-responsive' width='100' src='../images/{$user_image}' alt='images'></img></td>";
+        echo "<td>{$user_dh_insert}</td>";
+        echo "<td><a href='users.php?source=edit_user&u_id={$user_id}'>Edit</a></td>";
+        echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
+        echo "</tr>";
+    }
+    
+}
+
+function display_user(){
+    global $connection;
+
+    if(isset($_GET['u_id'])){
+        echo $_GET['u_id'];
+    }
+    $query_user = "SELECT * FROM user";
+    $select_user =  mysqli_query($connection, $query_user);
+    while($row = mysqli_fetch_assoc($select_user)){
+        $user_id = $row['id'];
+        $user_username = $row['username'];
+        $user_email = $row['email'];
+        $user_password = $row['password'];
+        $user_firstname = $row['firstname'];
+        $user_lastname = $row['lastname'];
+        $user_is_superuser = $row['is_superuser'];
+        $user_image = $row['image'];
+        $user_dh_insert = $row['dh_insert'];
+    }
 }
 
 
