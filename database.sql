@@ -7,15 +7,22 @@ use db;
 
 CREATE TABLE user (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    username VARCHAR(40) NOT NULL,
+    username VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
     password VARCHAR(200) NOT NULL,
+    firstname VARCHAR(200) NOT NULL,
+    lastname VARCHAR(200) NOT NULL,
+    is_superuser TINYINT(1) NOT NULL DEFAULT 0,
+    image TEXT NOT NULL,
+    rand_salt VARCHAR(255),
     PRIMARY KEY(id)
 );
 
+
 CREATE TABLE category (
 	id INTEGER NOT NULL AUTO_INCREMENT,
-  	title VARCHAR(255) NOT NULL,
-  	PRIMARY KEY(id)
+    title VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
 );
 
 drop table post;
@@ -28,7 +35,7 @@ CREATE TABLE post(
     image TEXT NOT NULL,
     content TEXT NOT NULL,
     tags VARCHAR(255) NOT NULL,
-    comment_count INTEGER NOT NULL,
+    comment_count INTEGER DEFAULT 0 NOT NULL,
     status VARCHAR(255) DEFAULT 'Draft' NOT NULL,
     category INTEGER NOT NULL, 
     PRIMARY KEY(id),
@@ -40,7 +47,7 @@ CREATE TABLE comment(
     author VARCHAR(255) NOT NULL,
     email VARCHAR(255)NOT NULL,
     content TEXT NOT NULL,
-    status VARCHAR(255) NOT NULL,
+    status status VARCHAR(255) DEFAULT 'Unplubished' NOT NULL,
     dh_insert DATETIME DEFAULT NOW(),
     post INTEGER NOT NULL,
     PRIMARY KEY(id),
@@ -49,12 +56,13 @@ CREATE TABLE comment(
 
 -- DELETE FROM post WHERE id = 1;
 -- ALTER TABLE post MODIFY comment_count INTEGER NOT NULL;
--- ALTER TABLE post MODIFY content TEXT NOT NULL;
+-- ALTER TABLE post MODIFY status VARCHAR(255) DEFAULT 'Unplubished' NOT NULL;
+-- ALTER TABLE user MODIFY rand_salt VARCHAR(255);
 -- SELECT * FROM `category`;
 -- SELECT * FROM `post`;
 -- INSERT INTO category SET id = 2, title = 'Bootstrap';
--- INSERT INTO user (id, username, password) VALUES (3, 'Claypson', 123456);
-INSERT INTO comment (id, author, email, content, status, post) VALUES (1, 'Jeremias', 'jeremias@gmail.com', 'A really great text', 'Stoped', 1);
+-- INSERT INTO user (id, username, email, password, firstname, lastname, image, rand_salt ) VALUES (1, 'Jeremias', 'jeremias@gmail.com', '123456', 'Jeremias', 'Da Silva', 'nothing.jpg', '123456');
+-- INSERT INTO comment (id, author, email, content, status, post) VALUES (1, 'Jeremias', 'jeremias@gmail.com', 'A really great text', 'Stoped', 1);
 -- UPDATE post SET tags = 'cavalo' WHERE id = 1;
 -- UPDATE post SET image = 'sample-6.png' WHERE id = 1;
 -- SELECT * FROM `user`; 
