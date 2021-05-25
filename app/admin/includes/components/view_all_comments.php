@@ -10,6 +10,8 @@
             <th>In Response To</th>
             <th>Approve</th>
             <th>Unapprove</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
