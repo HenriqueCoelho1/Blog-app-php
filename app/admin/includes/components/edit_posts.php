@@ -44,14 +44,14 @@ if(isset($_POST['update_post'])){
 
     $query_update = "UPDATE post SET ";
     $query_update .= "title = '$post_title', ";
-    $query_update .= "category = '$post_category', ";
+    $query_update .= "category = $post_category, ";
     $query_update .= "dh_insert = now(), ";
     $query_update .= "author = '$post_author', ";
     $query_update .= "status = '$post_status', ";
     $query_update .= "tags = '$post_tags', ";
     $query_update .= "content = '$post_content', ";
     $query_update .= "image = '$post_image' ";
-    $query_update .= "WHERE id  = '$edit_post_by_id' ";
+    $query_update .= "WHERE id  = $edit_post_by_id ";
 
     $update_query = mysqli_query($connection, $query_update);
 

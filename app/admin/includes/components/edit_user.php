@@ -51,8 +51,8 @@ if(isset($_POST['update_user'])){
     $query_update .= "lastname = '$user_lastname', ";
     $query_update .= "is_superuser = '$user_is_superuser', ";
     $query_update .= "image = '$user_image', ";
-    $query_update .= "dh_insert = now(), ";
-    $query_update .= "WHERE id  = '$edit_user_by_id' ";
+    $query_update .= "dh_insert = now() ";
+    $query_update .= "WHERE id  = $edit_user_by_id ";
     
 
     $update_query = mysqli_query($connection, $query_update);
