@@ -47,8 +47,8 @@ if(isset($_POST['update_user'])){
     $query_update .= "username = '$user_username', ";
     $query_update .= "email = '$user_email', ";
     $query_update .= "password = '$user_password', ";
-    $query_update .= "firstname = '$$user_firstname', ";
-    $query_update .= "lastname = '$$user_lastname', ";
+    $query_update .= "firstname = '$user_firstname', ";
+    $query_update .= "lastname = '$user_lastname', ";
     $query_update .= "is_superuser = '$user_is_superuser', ";
     $query_update .= "image = '$user_image', ";
     $query_update .= "dh_insert = now(), ";
