@@ -22,6 +22,6 @@
 </table>
 
         <?php display_user();?>
-        <?php delete_post();?>
+        <?php delete_user();?>
         
 

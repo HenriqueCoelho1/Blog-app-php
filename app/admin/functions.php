@@ -113,12 +113,17 @@ function delete_post(){
 
 function display_post(){
     global $connection;
-
     if(isset($_GET['p_id'])){
-        echo $_GET['p_id'];
+        $id_post_edit = $_GET['p_id'];
     }
-    $query_post = "SELECT * FROM post";
+    else{
+        $id_post_edit = 0;
+    }
+    $query_post = "SELECT * FROM post WHERE id = $id_post_edit";
     $select_post =  mysqli_query($connection, $query_post);
+    if(!$select_post){
+        die("QUERY FAILED! " . mysqli_error($connection));
+    }
     while($row = mysqli_fetch_assoc($select_post)){
         $post_id = $row['id'];
         $post_title = $row['title'];
@@ -255,9 +260,12 @@ function display_user(){
     global $connection;
 
     if(isset($_GET['u_id'])){
-        echo $_GET['u_id'];
+        $id_user_edit = $_GET['u_id'];
     }
-    $query_user = "SELECT * FROM user";
+    else{
+        $id_user_edit = 0;
+    }
+    $query_user = "SELECT * FROM user WHERE id = $id_user_edit";
     $select_user =  mysqli_query($connection, $query_user);
     while($row = mysqli_fetch_assoc($select_user)){
         $user_id = $row['id'];
@@ -272,5 +280,16 @@ function display_user(){
     }
 }
 
+function delete_user(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $delete_user_id = $_GET['delete'];
+
+        $query_delete_user = "DELETE FROM user where id = {$delete_user_id} ";
+        $delete_query_user = mysqli_query($connection, $query_delete_user);
+        header("Location: users.php");
+    }
+    
+}
 
 ?>

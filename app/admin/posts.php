@@ -27,7 +27,7 @@
                             include "includes/components/add_posts.php";
                             break;
 
-                            case 'edit_post':
+                            case 'edit_posts':
                             include "includes/components/edit_posts.php";
                             break;
 
