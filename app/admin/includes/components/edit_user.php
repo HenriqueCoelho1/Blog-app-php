@@ -1,35 +1,35 @@
 <?php
-if(isset($_GET['u_id'])){
-    $edit_user_by_id = $_GET['u_id'];
+if(isset($_GET["u_id"])){
+    $edit_user_by_id = $_GET["u_id"];
 }
 
 $query_single_user = "SELECT * FROM user WHERE id = $edit_user_by_id ";
 $select_user_by_id =  mysqli_query($connection, $query_single_user);
 
 while($row = mysqli_fetch_assoc($select_user_by_id)){
-    $user_username = $row['username'];
-    $user_email = $row['email'];
-    $user_password = $row['password'];
-    $user_firstname = $row['firstname'];
-    $user_lastname = $row['lastname'];
-    $user_is_superuser = $row['is_superuser'];
-    $user_image = $row['image'];
-    $user_rand_salt = $row['rand_salt'];
-    $user_dh_insert = $row['dh_insert'];
+    $user_username = $row["username"];
+    $user_email = $row["email"];
+    $user_password = $row["password"];
+    $user_firstname = $row["firstname"];
+    $user_lastname = $row["lastname"];
+    $user_is_superuser = $row["is_superuser"];
+    $user_image = $row["image"];
+    $user_rand_salt = $row["rand_salt"];
+    $user_dh_insert = $row["dh_insert"];
 }
 
-if(isset($_POST['update_user'])){
-    $user_username = $_POST['username'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_firstname = $_POST['firstname'];
-    $user_lastname = $_POST['lastname'];
-    $user_is_superuser = $_POST['is_superuser'];
+if(isset($_POST["update_user"])){
+    $user_username = $_POST["username"];
+    $user_email = $_POST["email"];
+    $user_password = $_POST["password"];
+    $user_firstname = $_POST["firstname"];
+    $user_lastname = $_POST["lastname"];
+    $user_is_superuser = $_POST["is_superuser"];
 
-    $user_image = $_FILES['image']['name'];
-    $user_image_temp = $_FILES['image']['tmp_name'];
+    $user_image = $_FILES["image"]["name"];
+    $user_image_temp = $_FILES["image"]["tmp_name"];
 
-    $user_rand_salt = $_POST['rand_salt'];
+    $user_rand_salt = $_POST["rand_salt"];
 
 
     move_uploaded_file($user_image_temp, "../upload/$user_image");
@@ -39,7 +39,7 @@ if(isset($_POST['update_user'])){
         $select_image = mysqli_query($connection, $query_image);
 
         while($row = mysqli_fetch_assoc($select_image)){
-            $user_image = $row['image'];
+            $user_image = $row["image"];
         }
     }
 
@@ -58,6 +58,7 @@ if(isset($_POST['update_user'])){
     $update_query = mysqli_query($connection, $query_update);
 
     confirm_query($update_query);
+    header("Location: users.php");
 }
 
 

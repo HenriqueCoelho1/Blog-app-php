@@ -16,18 +16,18 @@
                             <small>Author</small>
                         </h1>
                         <?php
-                        if(isset($_GET['source'])){
-                            $source = $_GET['source'];
+                        if(isset($_GET["source"])){
+                            $source = $_GET["source"];
                         }else {
-                            $source = '';
+                            $source = "";
                         }
                         
                         switch($source){
-                            case 'add_user':
+                            case "add_user":
                             include "includes/components/add_user.php";
                             break;
 
-                            case 'edit_user':
+                            case "edit_user":
                             include "includes/components/edit_user.php";
                             break;
 

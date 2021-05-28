@@ -19,7 +19,7 @@
                         if(isset($_GET['source'])){
                             $source = $_GET['source'];
                         }else {
-                            $source = '';
+                            $source = "";
                         }
                         
                         switch($source){
@@ -28,7 +28,7 @@
                             break;
 
                             case 'edit_post':
-                            include "includes/components/edit_posts.php";
+                            include "includes/components/edit_post.php";
                             break;
 
                             default:

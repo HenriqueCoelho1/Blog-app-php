@@ -1,34 +1,34 @@
 <?php
-if(isset($_GET['p_id'])){
-    $edit_post_by_id = $_GET['p_id'];
+if(isset($_GET["p_id"])){
+    $edit_post_by_id = $_GET["p_id"];
 }
 
 $query_single_post = "SELECT * FROM post WHERE id = $edit_post_by_id ";
 $select_post_by_id =  mysqli_query($connection, $query_single_post);
 
 while($row = mysqli_fetch_assoc($select_post_by_id)){
-    $post_id = $row['id'];
-    $post_title = $row['title'];
-    $post_author = $row['author'];
-    $post_dh_insert = $row['dh_insert'];
-    $post_image = $row['image'];
-    $post_content = $row['content'];
-    $post_tags = $row['tags'];
-    $post_status = $row['status'];
-    $post_category = $row['category'];
+    $post_id = $row["id"];
+    $post_title = $row["title"];
+    $post_author = $row["author"];
+    $post_dh_insert = $row["dh_insert"];
+    $post_image = $row["image"];
+    $post_content = $row["content"];
+    $post_tags = $row["tags"];
+    $post_status = $row["status"];
+    $post_category = $row["category"];
 }
 
-if(isset($_POST['update_post'])){
-    $post_title = $_POST['title'];
-    $post_author = $_POST['author'];
-    $post_category = $_POST['category'];
-    $post_status = $_POST['status'];
+if(isset($_POST["update_post"])){
+    $post_title = $_POST["title"];
+    $post_author = $_POST["author"];
+    $post_category = $_POST["category"];
+    $post_status = $_POST["status"];
 
-    $post_image = $_FILES['image']['name'];
-    $post_image_temp = $_FILES['image']['tmp_name'];
+    $post_image = $_FILES["image"]["name"];
+    $post_image_temp = $_FILES["image"]["tmp_name"];
 
-    $post_tags = $_POST['tags'];
-    $post_content = $_POST['content'];
+    $post_tags = $_POST["tags"];
+    $post_content = $_POST["content"];
 
 
     move_uploaded_file($post_image_temp, "../upload/$post_image");
@@ -38,7 +38,7 @@ if(isset($_POST['update_post'])){
         $select_image = mysqli_query($connection, $query_image);
 
         while($row = mysqli_fetch_assoc($select_image)){
-            $post_image = $row['image'];
+            $post_image = $row["image"];
         }
     }
 
@@ -56,6 +56,7 @@ if(isset($_POST['update_post'])){
     $update_query = mysqli_query($connection, $query_update);
 
     confirm_query($update_query);
+    header("Location: posts.php");
 }
 
 
@@ -78,8 +79,8 @@ if(isset($_POST['update_post'])){
 
         echo "<option value=''>Select</option>";
         while($row = mysqli_fetch_assoc($select_categories)){
-            $id = $row['id'];
-            $title = $row['title'];
+            $id = $row["id"];
+            $title = $row["title"];
 
             echo "<option value='{$id}'>{$title}</option>";
         }
