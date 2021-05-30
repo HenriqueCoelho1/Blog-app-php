@@ -8,6 +8,96 @@ function confirm_query($result){
 
 }
 
+function empty_input_signup($firstname, $lastname, $username, $email, $password, $password_repeat){
+    $result;
+    if(empty($firstname) || empty($lastname) || empty($username) || empty($email)  || empty($password) || empty($password_repeat)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function invalid_username($username){
+    $result;
+    if(!preg_match("/^[a-zA-Z0-9]*$/", $username)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function invalid_email($email){
+    $result;
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function password_match($password, $password_repeat){
+    $result;
+    if($password !== $password_repeat){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function username_exist($connection ,$username, $email){
+    $query = "SELECT * FROM user WHERE username = ? OR email = ? ;";
+    $stmt = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+
+
+    $result_data = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result_data)){
+        return $row;
+
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function create_user($connection, $firstname, $lastname, $username,  $email, $password){
+    $query = "INSERT INTO user(firstname, lastname, username, email, password) ";
+    $query .= "VALUES(?, ?, ?, ?, ? ) ";
+    $stmt = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "sssss", $firstname, $lastname, $username,  $email, $hash_password);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: ../signup.php?error=none");
+    exit();
+}
+
 function insert_category(){
     global $connection;
     if(isset($_POST["submit"])){
@@ -299,5 +389,3 @@ function delete_user(){
     }
     
 }
-
-?>

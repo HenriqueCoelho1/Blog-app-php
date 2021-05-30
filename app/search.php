@@ -1,10 +1,7 @@
-<?php           
+<?php include "includes/db.inc.php"; ?>
+<?php include "includes/header.php";?>
 
-?>
-<?php include "includes/db.php"; ?>
-<?php include "includes/components/header.php";?>
-
-<?php include "includes/components/nav.php";?>
+<?php include "includes/nav.php";?>
 
     
     
@@ -79,7 +76,7 @@
                 
 
             </div>
-            <?php include "includes/components/sidebar.php";?>
+            <?php include "includes/sidebar.php";?>
             
             
 
@@ -90,4 +87,4 @@
         <hr>
 
         <!-- Footer -->
-        <?php include "includes/components/footer.php";?>
+        <?php include "includes/footer.php";?>

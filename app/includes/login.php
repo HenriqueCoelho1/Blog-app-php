@@ -1,4 +1,4 @@
-<?php include "../db.php";?>
+<?php include "../db.inc.php";?>
 
 <?php 
 if(isset($_POST["login"])){

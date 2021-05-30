@@ -1,7 +1,7 @@
-<?php include "includes/components/admin_header.php";?>
+<?php include "includes/admin_header.php";?>
 
     <div id="wrapper"> 
-        <?php include "includes/components/admin_nav.php";?>
+        <?php include "includes/admin_nav.php";?>
         
 
         <div id="page-wrapper">
@@ -24,15 +24,15 @@
                         
                         switch($source){
                             case 'add_post':
-                            include "includes/components/add_posts.php";
+                            include "includes/add_posts.php";
                             break;
 
                             case 'edit_post':
-                            include "includes/components/edit_post.php";
+                            include "includes/edit_post.php";
                             break;
 
                             default:
-                            include "includes/components/view_all_comments.php";
+                            include "includes/view_all_comments.php";
                             break;
                         }
                         ?>
@@ -44,4 +44,4 @@
         </div>
         
 
-        <?php include "includes/components/admin_footer.php";?>  
+        <?php include "includes/admin_footer.php";?>  
