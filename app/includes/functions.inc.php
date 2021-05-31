@@ -79,9 +79,9 @@ function username_exist($connection ,$username, $email){
     mysqli_stmt_close($stmt);
 }
 
-function create_user($connection, $firstname, $lastname, $username,  $email, $password){
-    $query = "INSERT INTO user(firstname, lastname, username, email, password) ";
-    $query .= "VALUES(?, ?, ?, ?, ? ) ";
+function create_user($connection, $username, $email, $password, $firstname, $lastname){
+    $query = "INSERT INTO user(username, email, password, firstname, lastname) ";
+    $query .= "VALUES(?, ?, ?, ?, ?) ";
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
@@ -91,7 +91,7 @@ function create_user($connection, $firstname, $lastname, $username,  $email, $pa
 
     $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $firstname, $lastname, $username,  $email, $hash_password);
+    mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $hash_password, $firstname, $lastname);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../signup.php?error=none");

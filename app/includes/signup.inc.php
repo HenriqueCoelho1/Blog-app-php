@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
         header("Location: ../signup.php?error=usernameexist");
         exit();
     }
-    create_user($connection, $username, $email, $username, $password);
+    create_user($connection,  $username,  $email, $password, $firstname, $lastname);
 }
 else{
     header("Location: ../signup.php");
