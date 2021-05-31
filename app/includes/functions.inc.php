@@ -98,6 +98,42 @@ function create_user($connection, $username, $email, $password, $firstname, $las
     exit();
 }
 
+function empty_input_login($username, $password){
+    $result;
+    if(empty($username) || empty($password)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function login_user($connection, $username, $password){
+    $username_exists = username_exist($connection, $username, $username);
+
+    if($username_exists === false){
+        header("Location: ../login.php?error=wronglogin");
+        exit();
+    }
+
+    $password_hash = $username_exists["password"];
+    $check_password = password_verify($password, $password_hash);
+
+    if($check_password === false){
+        header("Location: ../login.php?error=wronglogin");
+        exit();
+    }else if($check_password === true){
+        session_start();
+        $_SESSION["id"] = $username_exists["id"];
+        $_SESSION["username"] = $username_exists["username"];
+        header("Location: ../index.php");
+        exit();
+    }
+
+}
+
+
 function insert_category(){
     global $connection;
     if(isset($_POST["submit"])){

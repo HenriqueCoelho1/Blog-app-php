@@ -1,52 +1,38 @@
-<?php include "../db.inc.php";?>
+<?php include "includes/db.inc.php"; ?>
+<?php include "includes/header.php"; ?>
+<?php include "includes/nav.php";?>
 
-<?php 
-if(isset($_POST["login"])){
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+<h2>Sign In</h2>
+<form action="includes/login.inc.php" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username Or Email" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Your password" />
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" name="submit" />
+    </div>
 
-    $username = mysqli_real_escape_string($connection, $username);
-    $password = mysqli_real_escape_string($connection, $password);
-
-    $query = "SELECT * FROM user WHERE username = '{$username}' ";
-    $select_user_query = mysqli_query($connection, $query);
-    if(!$select_user_query){
-        die("QUERY FAILED! " . mysqli_error($connection));
+<?php
+if(isset($_GET["error"])){
+    if($_GET["error"] == "emptyinput"){
+        echo "<p>Fill in all fields!</p>";
     }
-
-
-    while($row = mysqli_fetch_array($select_user_query)){
-        $db_user_id = $row['id'];
-        $db_user_username = $row['username'];
-        $db_user_password = $row['password'];
-        $db_user_firstname = $row['firstname'];
-        $db_user_lastname = $row['lastname'];
-        $db_user_is_superuser = $row['is_superuser'];
-
-        // if($username !== $db_user_username && $password !== $db_user_password){
-        //     header("Location: index.php");
-        // }
-        // else if($username == $db_user_username && $password == $db_user_password){
-        //     header("Location: /admin");
-        // }
-        // else{
-        //     header("Location: index.php");
-
-        // }
-
-        if($username === $db_user_username && $password === $db_user_password){
-            header("Location: /admin");
-        }
-        else{
-            header("Location: ../index.php");
-
-        }
-
+    else if($_GET["error"] == "wronglogin"){
+        echo "<p>Incorrect login information!</p>";
     }
-    
-
-    
 }
+?>  
+</form>
 
 
-?>
+
+
+
+
+
+
+<?php include "includes/footer.php"; ?>

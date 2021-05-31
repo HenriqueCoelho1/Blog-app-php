@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             
@@ -27,6 +28,16 @@
                     <li>
                         <a href="admin">Admin</a>
                     </li>
+                    <?php
+                    if(isset($_SESSION["username"])){
+                        echo "<li><a href='profile.php'>Profile</a></li>";
+                        echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+                    }
+                    else{
+                        echo "<li><a href='login.php'>Login</a></li>";
+                        echo "<li><a href='signup.php'>Sign Up</a></li>";
+                    }
+                    ?>
                     <!-- <li>
                         <a href="#">Services</a>
                     </li>
