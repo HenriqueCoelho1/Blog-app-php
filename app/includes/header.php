@@ -13,9 +13,10 @@ session_start();
     <meta name="author" content="">
 
     <title>Blog 2021</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/blog-home.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/acdb99b9ed.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="../js/bulma.js"></script>
+    
 
     
 

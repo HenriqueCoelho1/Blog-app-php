@@ -1,52 +1,63 @@
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Posts Writing</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">CMS Blog</a>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        
+        <a class="navbar-item" href="https://bulma.io">
+            <h2>CMS Blog 2021</h2>
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">Home</a>
+            <a class="navbar-item">My Github <span class="icon is-left"><i class="fa fa-github"></i></span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Categories</a>
+                <div class="navbar-dropdown">
+                    
                 <?php
-                    $query = "SELECT * FROM category";
+                    $query = "SELECT * FROM category LIMIT 4";
                     $select_all_category =  mysqli_query($connection, $query);
 
                     while($row = mysqli_fetch_assoc($select_all_category)){
                         $category_id = $row['id'];
                         $category_title = $row['title'];
-                        echo "<li><a href='category.php?category={$category_id}'>{$category_title}</a></li>";
-
+                        echo "<a href='category.php?category={$category_id}' class='navbar-item'>{$category_title}</a>";
+                    
                     }
                 ?>
-                    <li>
-                        <a href="admin">Admin</a>
-                    </li>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="field is-grouped">
+                
                     <?php
                     if(isset($_SESSION["username"])){
                         echo "<li><a href='profile.php'>Profile</a></li>";
                         echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
                     }
                     else{
-                        echo "<li><a href='login.php'>Login</a></li>";
-                        echo "<li><a href='signup.php'>Sign Up</a></li>";
+                        echo "<p class='control'><a href='signup.php' class='button'><span class='icon'><i class='fa fa-user-plus'></i></i></span><span>Sign Up</span></a></p>";
+                        echo "<p class='control'><a href='login.php' class='button is-dark'><span class='icon'><i class='fa fa-sign-in'></i></span><span>Login</span></a></p>";
                     }
                     ?>
-                    <!-- <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li> -->
-                </ul>
+                
+                </div>
             </div>
-            
         </div>
-        
-    </nav>
+
+    </div>
+</nav>
