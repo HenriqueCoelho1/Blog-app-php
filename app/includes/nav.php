@@ -34,6 +34,7 @@
                     
                     }
                 ?>
+                <hr class="navbar-divider">
                 </div>
                 
             </div>
