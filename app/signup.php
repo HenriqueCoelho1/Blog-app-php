@@ -3,7 +3,7 @@
 <?php include "includes/nav.php";?>
 
 
-<section class="hero has-background-white-ter is-fullheight">
+<section class="hero has-background-black-ter is-fullheight">
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
