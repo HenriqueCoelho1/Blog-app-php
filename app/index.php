@@ -6,13 +6,16 @@
     
     
 
+<section class="hero has-background-white-ter is-fullheight">
+    <div class="hero-body">
     
-    <div class="container">
+    <div class="container p-2">
 
         <div class="row">
+            <div class="columns is-centered">
 
             
-            <div class="col-md-8">
+            <div class="is-6-desktop">
             <?php
             $query = "SELECT * FROM post WHERE status = 'Published'";
             $select_all_post = mysqli_query($connection, $query);
@@ -35,7 +38,7 @@
                     
                     
             ?>
-                <h1 class="page-header">
+                <h1 class="title is-1">
                     Page Heading
                     <small>Secondary Text</small>
                 </h1>
@@ -53,7 +56,8 @@
                     <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="" />
                 </a>
                 
-                <hr>
+                <br />
+                <br />
                 <p><?php echo $post_content;?></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
@@ -73,15 +77,15 @@
                 
 
             </div>
-            <?php include "includes/sidebar.php";?>
+            </div>
             
             
 
         </div>
 
-        
+    </div>   
 
         <hr>
-
+</section>
         <!-- Footer -->
         <?php include "includes/footer.php";?>

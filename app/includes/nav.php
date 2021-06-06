@@ -16,7 +16,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item">Home</a>
-            <a class="navbar-item">My Github <span class="icon is-left"><i class="fa fa-github"></i></span>
+            <a class="navbar-item" href="https://github.com/HenriqueCoelho1/" target="_blank">My Github <span class="icon is-left"><i class="fa fa-github"></i></span>
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
@@ -47,8 +47,8 @@
                 
                     <?php
                     if(isset($_SESSION["username"])){
-                        echo "<li><a href='profile.php'>Profile</a></li>";
-                        echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+                        echo "<p class='control'><a href='profile.php' class='button is-dark'><span class='icon'><i class='fa fa-user'></i></i></span><span>Profile</span></a></p>";
+                        echo "<p class='control'><a href='includes/logout.inc.php' class='button'><span class='icon'><i class='fa fa-sign-out'></i></i></span><span>Log Out</span></a></p>";
                     }
                     else{
                         echo "<p class='control'><a href='signup.php' class='button'><span class='icon'><i class='fa fa-user-plus'></i></i></span><span>Sign Up</span></a></p>";
