@@ -38,20 +38,11 @@
                     
                     
             ?>
-                <h1 class="title is-1">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-
-                
-                <h2>
-                    <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
-                </h2>
-                <p class="lead">
+                <h1 class="title is-1"><?php echo $post_title ?></h1>
+                <h5 class="subtitle is-5">
                     by <a href="index.php"><?php echo $post_author;?></a>
-                </p>
+                </h5>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_dh_insert;?></p>
-                <hr>
                 <a href="post.php?p_id=<?php echo $post_id;?>">
                     <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="" />
                 </a>
@@ -59,7 +50,7 @@
                 <br />
                 <br />
                 <p><?php echo $post_content;?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="button is-info is-small" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
             <?php

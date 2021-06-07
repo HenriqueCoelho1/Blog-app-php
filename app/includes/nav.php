@@ -2,7 +2,7 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item">
             <h2>CMS Blog 2021</h2>
         </a>
     
