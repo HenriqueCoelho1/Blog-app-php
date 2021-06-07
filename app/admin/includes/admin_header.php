@@ -12,10 +12,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Admin</title>
 
     <script src="https://use.fontawesome.com/acdb99b9ed.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../js/bulma.js"></script>
     <script src="../js/adminToggle.js"></script>
 
