@@ -1,3 +1,10 @@
-.menu {
-  background-color: rgb(22, 21, 21);
+.menu-list > li > a:focus,
+.menu-list > li > a:hover {
+  text-decoration: none;
+  background-color: black !important;
+}
+.menu-list > li > ul > li > a:focus,
+.menu-list > li > ul > li > a:hover {
+  text-decoration: none;
+  background-color: black !important;
 }
