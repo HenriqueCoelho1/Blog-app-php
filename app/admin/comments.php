@@ -1,12 +1,10 @@
 <?php include "includes/admin_header.php";?>
-
-    <div id="wrapper"> 
-        <?php include "includes/admin_nav.php";?>
+<?php include "includes/admin_nav.php";?>
         
 
-        <div id="page-wrapper">
+        <div class="columns">
 
-            <div class="container-fluid">
+            <div class="container">
 
                 
                 <div class="row">

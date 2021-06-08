@@ -1,30 +1,31 @@
 <?php include "includes/admin_header.php";?>
+<?php include "includes/admin_nav.php";?>
 
-    <div id="wrapper"> 
-        
-        <?php include "includes/admin_nav.php";?>
-        
+    <div class="column is-11">
+        <h1 class="title is-1">
+            Welcome to Admin
+            <small>Author</small>
+        </h1>
+    </div>
+</div>
+                        
+                        
 
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
+            <!-- <div class="container p-5"> -->
 
                 <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Welcome to Admin
-                            <small>Author</small>
-                        </h1>
+                <!-- <div class="row">
+                    <div class="is-11">
+                        
                         
                     </div>
-                </div>
+                </div> -->
                 <!-- /.row -->
 
-            </div>
+            <!-- </div> -->
             <!-- /.container-fluid -->
 
-        </div>
-        <!-- /#page-wrapper -->
+        <!-- </div> -->
+        <!-- /#columns admin-nav -->
 
         <?php include "includes/admin_footer.php";?>  

@@ -39,10 +39,11 @@
                 
                 <!-- /.navbar-collapse -->
     </nav>
+    
 
     <div class="columns">
-        <div class="column is-one-fifth">
-            <section class="hero has-background-black is-fullheight">
+        <div class="column is-2 hero has-background-black is-fullheight">
+            <!-- <section class="hero has-background-black is-fullheight"> -->
                 
                     <div class="column">
                         <aside class="menu">
@@ -79,6 +80,8 @@
                             </ul>
                         </aside>
                     </div>
-            </section>
+            <!-- </section> -->
         </div>
-    </div>
+        
+    
+    
