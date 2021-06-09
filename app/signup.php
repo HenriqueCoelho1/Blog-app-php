@@ -16,7 +16,7 @@
                                     <div class="field p-1">    
                                             <label class="label" for="firstname">First Name:</label>
                                             <div class="control">
-                                                <input class="input is-info" type="text" placeholder="Your First Name" name="fistname" value="" />
+                                                <input class="input is-info" type="text" placeholder="Your First Name" name="firstname" value="" />
                                             </div>
                                     </div>
                                     <div class="field p-1">    

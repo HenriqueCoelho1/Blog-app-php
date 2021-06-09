@@ -43,14 +43,20 @@
 
     <div class="columns">
         <div class="column is-2 hero has-background-black is-fullheight">
-            <!-- <section class="hero has-background-black is-fullheight"> -->
+            
                 
                     <div class="column">
                         <aside class="menu">
                             <p class="menu-label">General</p>
                             <ul class="menu-list">
-                                <li><a class="has-text-white">Dashboard</a></li>
-                                <li><a class="has-text-white">Customers</a></li>
+                                <li><a class="has-text-white" href="posts.php?source=view_all_post"><span class="icon"><i class="fa fa-tachometer"></i></span> Dashboard</a></li>
+                                <li>
+                                    <a class="has-text-white" href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><span class="icon"><i class="fa fa-table"></i></span> Posts</a>
+                                    <ul id="posts_dropdown" class="collapse">
+                                        <li><a class="has-text-white" href="posts.php?source=add_post"><span class="icon"><i class="fa fa-plus-circle"></i></span> Add Post</a></li>
+                                        <li><a class="has-text-white" href="posts.php?source=edit_post"><span class="icon"><i class="fa fa-edit"></i></span> Edit Post</a></li>
+                                    </ul>
+                                </li>
                             </ul>
 
                             <p class="menu-label">Administration</p>
@@ -78,9 +84,9 @@
                                 <li><a class="has-text-white">Transfers</a></li>
                                 <li><a class="has-text-white">Balance</a></li>
                             </ul>
+
                         </aside>
                     </div>
-            <!-- </section> -->
         </div>
         
     

@@ -4,14 +4,19 @@
     <div class="column is-11">
         <h1 class="title is-1">
             Welcome to Admin
-            <small>Author</small>
         </h1>
+        <h2 class="subtitle is-2">
+            Author
+        </h2>
     </div>
-</div>
+    <div class="container p-5">
+    </div>
+</div> <!-- Final div for columns -->
                         
                         
 
-            <!-- <div class="container p-5"> -->
+            
+
 
                 <!-- Page Heading -->
                 <!-- <div class="row">
