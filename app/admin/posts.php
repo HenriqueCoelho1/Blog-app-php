@@ -1,17 +1,14 @@
 <?php include "includes/admin_header.php";?>
 <?php include "includes/admin_nav.php";?>
 
-<div class="column is-11">
+    <div class="column is-11">
         <h1 class="title is-1">
             Welcome to Admin
         </h1>
         <h2 class="subtitle is-2">
             Author
         </h2>
-    </div>
-    
-</div> <!-- Final div for columns -->
-<?php
+        <?php
         if(isset($_GET["source"])){
             $source = $_GET["source"];
         }else {
@@ -32,6 +29,10 @@
             break;
         }
         ?>
+    </div>
+    
+</div> <!-- Final div for columns -->
+
         
 
         

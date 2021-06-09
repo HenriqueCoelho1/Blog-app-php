@@ -130,7 +130,7 @@ if(isset($_POST['create_post'])){
                                     <div class="field p-1">    
                                         <label class="label" for="content">Content:</label>
                                         <div class="control">
-                                            <textarea class="textarea is-info" placeholder="Content" rows="10"></textarea>
+                                            <textarea class="textarea is-info" placeholder="Content" name="content" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
