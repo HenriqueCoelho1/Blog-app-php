@@ -36,15 +36,27 @@ if(isset($_POST['create_post'])){
                             <h3 class="title is-3 has-text-centered">Add Post</h3>
                             <div class="field is-horizontal">
                                 <div class="field-body">
-                                    <div class="field p-1">    
+                                    <div class="field">    
                                             <label class="label" for="title">Title:</label>
                                             <div class="control">
                                                 <input class="input is-info" type="text" placeholder="Your First Name" name="title" value="" />
                                             </div>
                                     </div>
-                                    <div class="field p-1">    
+                                    <div class="field">    
+                                        <label class="label" for="author">Author: </label>
+                                        <div class="control">
+                                            <input class="input is-info" type="text" placeholder="Author" name="author" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                <div class="field">
+                                        <label class="label" for="category">Category:</label>    
                                         <div class="control has-icons-left">
-                                            <div class="select">
+                                            <div class="select is-medium">
                                                 <select name="category" id="">
                                                     <option value="">Select Category</option>
                                                     <?php
@@ -68,29 +80,20 @@ if(isset($_POST['create_post'])){
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="field is-horizontal">
-                                <div class="field-body">
-                                    <div class="field p-1">    
-                                        <label class="label" for="author">Author: </label>
-                                        <div class="control">
-                                            <input class="input is-info" type="text" placeholder="Author" name="author" value="" />
-                                        </div>
-                                    </div>
-                                    <div class="field p-1">    
-                                    <div class="control has-icons-left">
-                                        <div class="select">
-                                            <select name="status" id="">
-                                                <option value="Unpublished">Unpublished</option>
-                                                <option value="Published">Published</option>
-                                                
-                                            </select>
-                                        </div>
-                                        <div class="icon is-small is-left">
-                                            <i class="fa fa-filter"></i>
-                                        </div>
+                                    
+                                    <div class="field">    
+                                        <label class="label" for="status">Status:</label>
+                                        <div class="control has-icons-left">
+                                            <div class="select is-medium">
+                                                <select name="status" id="">
+                                                    <option value="Unpublished">Unpublished</option>
+                                                    <option value="Published">Published</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="icon is-small is-left">
+                                                <i class="fa fa-filter"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -98,10 +101,10 @@ if(isset($_POST['create_post'])){
 
                             <div class="field is-horizontal">
                                 <div class="field-body">
-                                    <div class="field p-1">    
+                                    <div class="field">    
                                         <label class="label" for="image">Image:</label>
                                         <div class="control">
-                                        <div class="file">
+                                        <div class="file is-medium">
                                             <label class="file-label">
                                                 <input class="file-input" type="file" name="image">
                                                 <span class="file-cta">
@@ -116,7 +119,7 @@ if(isset($_POST['create_post'])){
                                         </div>
                                         </div>
                                     </div>
-                                    <div class="field p-1">    
+                                    <div class="field">    
                                             <label class="label" for="tags">Tags:</label>
                                             <div class="control">
                                                 <input class="input is-info" type="text" placeholder="Tags" name="tags" value="" />
@@ -127,7 +130,7 @@ if(isset($_POST['create_post'])){
 
                             <div class="field is-horizontal">
                                 <div class="field-body">
-                                    <div class="field p-1">    
+                                    <div class="field">    
                                         <label class="label" for="content">Content:</label>
                                         <div class="control">
                                             <textarea class="textarea is-info" placeholder="Content" name="content" rows="10"></textarea>
