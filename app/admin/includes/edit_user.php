@@ -166,7 +166,7 @@ if(isset($_POST["update_user"])){
                                             echo "<img src='../upload/<?php echo $user_image; ?>' width='100' alt=''/>";
                                         }
                                         else{
-                                            echo "<img src='../upload/default-user.jpg width='100' alt=''/>";
+                                            echo "<img src='../upload/default-user.jpg' width='100' alt=''/>";
                                         }
                                         ?>
                                         <label class="label" for="image">Image:</label>

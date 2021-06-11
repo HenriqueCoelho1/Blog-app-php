@@ -1,4 +1,4 @@
-<table class="table table-border table-hover">
+<table class="table is-hoverable">
     <thead>
         <tr>
             <th>Id</th>
@@ -11,7 +11,7 @@
             <th>Image</th>
             <th>Date</th>
             <th>Edit</th>
-            <th>Delete</th>
+            <th><abbr title="Delete">Del</abbr></th>
         </tr>
     </thead>
     <tbody>

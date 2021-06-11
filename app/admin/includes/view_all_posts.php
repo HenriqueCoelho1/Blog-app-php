@@ -12,7 +12,7 @@
             <th><abbr title="Comments">Com</abbr></th>
             <th>Status</th>
             <th>Category</th>
-            <th>Delete</th>
+            <th><abbr title="Delete">Del</abbr></th>
             <th>Edit</th>
         </tr>
     </thead>
