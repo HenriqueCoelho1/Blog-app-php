@@ -66,47 +66,148 @@ if(isset($_POST["update_user"])){
 
 ?>
 
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" value="<?php echo $user_username; ?>" class="form-control" name="username" />
-    </div>
+<section class="hero has-background-black-ter is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="box">
+                    <div class="is-5-tablet is-4-desktop is-3-widescreen">
+                    
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <h3 class="title is-3 has-text-centered">Edit User</h3>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="username">Username:</label>
+                                            <div class="control">
+                                            <input 
+                                            class="input is-info" 
+                                            type="text" 
+                                            name="username"
+                                            placeholder="Username" 
+                                            value="<?php echo $user_username; ?>" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                            <label class="label" for="title">Email:</label>
+                                            <div class="control">
+                                                <input class="input is-info" 
+                                                type="email" 
+                                                placeholder="Your Email" 
+                                                name="email" 
+                                                value="<?php echo $user_email; ?>" />
+                                            </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" value="<?php echo $user_email; ?>" class="form-control" name="email" />
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" value="<?php echo $user_password; ?>" class="form-control" name="password" />
-    </div>
-    <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="firstname" />
-    </div>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="password">Password:</label>
+                                            <div class="control">
+                                            <input 
+                                            class="input is-info" 
+                                            type="password" 
+                                            name="password"
+                                            placeholder="User Password" 
+                                            value="<?php echo $user_password; ?>" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                        <label class="label" for="is_superuser">Is Admin?</label>
+                                        <div class="control">
+                                            <div class="select">
+                                            <select name="is_superuser" id="">
+                                                <option value="">Select</option>
+                                                <option value="0">Is User</option>
+                                                <option value="1">Is Admin</option>
+                                            </select>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <label for="lastname">Last Name</label>
-        <input type="text" value="<?php echo $user_lastname; ?>" class="form-control" name="lastname" />
-    </div>
-    <div class="form-group">
-        <select name="is_superuser" id="">
-            <option value="">Select</option>
-            <option value="0">Is User</option>
-            <option value="1">Is Admin</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <img src="../upload/<?php echo $user_image; ?>" width="100" alt=""/>
-        <br />
-        <input type="file" name="image" />
-    </div>
-    <div class="form-group">
-        <label for="rand_salt">Rand Salt</label>
-        <input type="text" value="<?php echo $user_rand_salt; ?>" class="form-control" name="rand_salt" />
-    </div>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="firstname">First Name:</label>
+                                            <div class="control">
+                                            <input 
+                                            class="input is-info" 
+                                            type="text" 
+                                            name="firstname"
+                                            placeholder="User First Name" 
+                                            value="<?php echo $user_firstname; ?>" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                            <label class="label" for="lastname">Last Name:</label>
+                                            <div class="control">
+                                                <input class="input is-info" 
+                                                type="text"
+                                                name="lastname"  
+                                                placeholder="User Last Name" 
+                                                value="<?php echo $user_lastname; ?>" />
+                                            </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="update_user" value="Edit User" />
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">
+                                        <?php 
+                                        if(!empty($user_image)){
+                                            echo "<img src='../upload/<?php echo $user_image; ?>' width='100' alt=''/>";
+                                        }
+                                        else{
+                                            echo "<img src='../upload/default-user.jpg width='100' alt=''/>";
+                                        }
+                                        ?>
+                                        <label class="label" for="image">Image:</label>
+                                        <div class="control">
+                                        <div class="file is-medium">
+                                            <label class="file-label">
+                                                <input class="file-input" type="file" name="image">
+                                                <span class="file-cta">
+                                                <span class="file-icon">
+                                                    <i class="fa fa-upload"></i>
+                                                </span>
+                                                <span class="file-label">
+                                                    Choose a file…
+                                                </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">    
+                                        <label class="label" for="rand_salt">Rand Salt:</label>
+                                        <div class="control">
+                                            <input 
+                                            class="input is-info" 
+                                            type="text" 
+                                            placeholder="rand_salt" 
+                                            name="rand_salt" 
+                                            value="<?php echo $user_rand_salt; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field p-1">
+                                <div class="control">
+                                    <button class="button is-info is-medium is-fullwidth" name="update_user" value="">Update User</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</section>

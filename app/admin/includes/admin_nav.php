@@ -49,12 +49,12 @@
                         <aside class="menu">
                             <p class="menu-label">General</p>
                             <ul class="menu-list">
-                                <li><a class="has-text-white" href="posts.php?source=view_all_post"><span class="icon"><i class="fa fa-tachometer"></i></span> Dashboard</a></li>
+                                <li><a class="has-text-white" href="index.php"><span class="icon"><i class="fa fa-tachometer"></i></span> Dashboard</a></li>
                                 <li>
-                                    <a class="has-text-white" href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><span class="icon"><i class="fa fa-table"></i></span> Posts</a>
+                                    <a class="has-text-white" href="posts.php" data-toggle="collapse" data-target="#posts_dropdown"><span class="icon"><i class="fa fa-table"></i></span> Posts</a>
                                     <ul id="posts_dropdown" class="collapse">
                                         <li><a class="has-text-white" href="posts.php?source=add_post"><span class="icon"><i class="fa fa-plus-circle"></i></span> Add Post</a></li>
-                                        <li><a class="has-text-white" href="posts.php?source=edit_post"><span class="icon"><i class="fa fa-edit"></i></span> Edit Post</a></li>
+                                        <li><a class="has-text-white" href="posts.php?source=view_all_post"><span class="icon"><i class="fa fa-edit"></i></span> View All Posts</a></li>
                                     </ul>
                                 </li>
                             </ul>

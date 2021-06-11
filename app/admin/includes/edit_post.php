@@ -64,55 +64,141 @@ if(isset($_POST["update_post"])){
 
 ?>
 
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" value="<?php echo $post_title; ?>" class="form-control" name="title" />
-    </div>
-    <div class="form-group">
-        <select name="category" id="">
-        <?php
-        $query_display_category = "SELECT * FROM category";
-        $select_categories = mysqli_query($connection, $query_display_category);
+<section class="hero has-background-black-ter is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="box">
+                    <div class="is-5-tablet is-4-desktop is-3-widescreen">
+                    
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <h3 class="title is-3 has-text-centered">Edit Post</h3>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="title">Title:</label>
+                                            <div class="control">
+                                                <input class="input is-info" 
+                                                type="text" 
+                                                placeholder="Your First Name" 
+                                                name="title" value="<?php echo $post_title; ?>" />
+                                            </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label" for="category">Category:</label>    
+                                        <div class="control has-icons-left">
+                                            <div class="select is-medium">
+                                                <select name="category" id="">
+                                                    <?php
+                                                    $query_display_category = "SELECT * FROM category";
+                                                    $select_categories = mysqli_query($connection, $query_display_category);
 
-        confirm_query($select_categories);
+                                                    confirm_query($select_categories);
 
-        echo "<option value=''>Select</option>";
-        while($row = mysqli_fetch_assoc($select_categories)){
-            $id = $row["id"];
-            $title = $row["title"];
+                                                    echo "<option value=''>Select Category</option>";
+                                                    while($row = mysqli_fetch_assoc($select_categories)){
+                                                        $id = $row["id"];
+                                                        $title = $row["title"];
 
-            echo "<option value='{$id}'>{$title}</option>";
-        }
+                                                        echo "<option value='{$id}'>{$title}</option>";
+                                                    }
 
-        ?>
-        </select>
-            
-    </div>
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="icon is-small is-left">
+                                                <i class="fa fa-filter"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <label for="author">Author</label>
-        <input type="text" value="<?php echo $post_author; ?>" class="form-control" name="author" />
-    </div>
-    <div class="form-group">
-        <label for="status">Status</label>
-        <input type="text" value="<?php echo $post_status; ?>" class="form-control" name="status" />
-    </div>
-    <div class="form-group">
-        <img src="../upload/<?php echo $post_image; ?>" width="100" alt=""/>
-        <br />
-        <input type="file" name="image" />
-    </div>
-    <div class="form-group">
-        <label for="tags">Tags</label>
-        <input type="text" value="<?php echo $post_tags; ?>" class="form-control" name="tags" />
-    </div>
-    <div class="form-group">
-        <label for="post_content">Content</label>
-        <textarea class="form-control" value="" name="content" id="" cols="30" rows="10"><?php echo $post_content;?></textarea>
-    </div>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                        <label class="label" for="author">Author: </label>
+                                        <div class="control">
+                                            <input class="input is-info" type="text" placeholder="Author" name="author" value="<?php echo $post_author; ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="field">    
+                                        <label class="label" for="status">Status:</label>
+                                        <div class="control has-icons-left">
+                                            <div class="select is-medium">
+                                                <select name="status" id="">
+                                                    <?php 
+                                                    if($post_status === "Published"){
+                                                        echo "<option value='Unpublished'>Unpublished</option>";
+                                                        echo "<option value='Published'>Published</option>";
+                                                    }else if($post_status === "Unpublished"){
+                                                        echo "<option value='Unpublished'>Unpublished</option>";
+                                                        echo "<option value='Published'>Published</option>";
+                                                    }
+                                                    else{
+                                                        echo "<option value='$post_status'>$post_status</option>";
+                                                        echo "<option value='Unpublished'>Unpublished</option>";
+                                                        echo "<option value='Published'>Published</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="icon is-small is-left">
+                                                <i class="fa fa-filter"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="update_post" value="Publish Post" />
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                        <img src="../upload/<?php echo $post_image; ?>" width="100" alt=""/>
+                                        <label class="label" for="image">Image:</label>
+                                        <div class="control">
+                                        <div class="file is-medium">
+                                            <label class="file-label">
+                                                <input class="file-input" type="file" name="image">
+                                                <span class="file-cta">
+                                                <span class="file-icon">
+                                                    <i class="fa fa-upload"></i>
+                                                </span>
+                                                <span class="file-label">
+                                                    Choose a file…
+                                                </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">    
+                                        <label class="label" for="tags">Tags:</label>
+                                        <div class="control">
+                                            <input class="input is-info" type="text" placeholder="Tags" name="tags" value="<?php echo $post_tags; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                        <label class="label" for="content">Content:</label>
+                                        <div class="control">
+                                            <textarea class="textarea is-info" placeholder="Content" name="content" rows="10" value="<?php echo $post_content;?>"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field p-1">
+                                <div class="control">
+                                    <button class="button is-info is-medium is-fullwidth" name="update_post" value="">Update Post</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</section>

@@ -53,33 +53,33 @@ if(isset($_POST['create_post'])){
                             
                             <div class="field is-horizontal">
                                 <div class="field-body">
-                                <div class="field">
-                                        <label class="label" for="category">Category:</label>    
-                                        <div class="control has-icons-left">
-                                            <div class="select is-medium">
-                                                <select name="category" id="">
-                                                    <option value="">Select Category</option>
-                                                    <?php
-                                                    $query_display_category = "SELECT * FROM category";
-                                                    $select_categories = mysqli_query($connection, $query_display_category);
+                                    <div class="field">
+                                            <label class="label" for="category">Category:</label>    
+                                            <div class="control has-icons-left">
+                                                <div class="select is-medium">
+                                                    <select name="category" id="">
+                                                        <option value="">Select Category</option>
+                                                        <?php
+                                                        $query_display_category = "SELECT * FROM category";
+                                                        $select_categories = mysqli_query($connection, $query_display_category);
 
-                                                    confirm_query($select_categories);
+                                                        confirm_query($select_categories);
 
-                                                    echo "<option value=''>Select</option>";
-                                                    while($row = mysqli_fetch_assoc($select_categories)){
-                                                        $id = $row['id'];
-                                                        $title = $row['title'];
+                                                        echo "<option value=''>Select</option>";
+                                                        while($row = mysqli_fetch_assoc($select_categories)){
+                                                            $id = $row['id'];
+                                                            $title = $row['title'];
 
-                                                        echo "<option value='{$id}'>{$title}</option>";
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="icon is-small is-left">
-                                                <i class="fa fa-filter"></i>
+                                                            echo "<option value='{$id}'>{$title}</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="icon is-small is-left">
+                                                    <i class="fa fa-filter"></i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     
                                     <div class="field">    
                                         <label class="label" for="status">Status:</label>

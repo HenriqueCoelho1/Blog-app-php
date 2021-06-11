@@ -1,4 +1,5 @@
-<table class="table table-border table-hover">
+
+<table class="table is-hoverable">
     <thead>
         <tr>
             <th>Id</th>
@@ -8,7 +9,7 @@
             <th>Image</th>
             <th>Content</th>
             <th>Tags</th>
-            <th>Comments</th>
+            <th><abbr title="Comments">Com</abbr></th>
             <th>Status</th>
             <th>Category</th>
             <th>Delete</th>
