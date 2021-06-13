@@ -20,15 +20,25 @@ function empty_input_signup($firstname, $lastname, $username, $email, $password,
 }
 
 
-function empty_input_role_admin($is_superuser){
+function role_int($is_superuser){
     $result;
-    if(empty($is_superuser)){
-        $result = true;
+    if(!is_int($is_superuser) && is_string($is_superuser)){
+        $result = false;
+        if($is_superuser === "1"){
+            $is_superuser === 1;
+
+        }else if($is_superuser === "0"){
+            $is_superuser === 0;
+        }
+        else{
+            $result = true;
+        }
     }
     else{
-        $result = false;
+        $result = true;
     }
     return $result;
+    return $is_superuser;
 }
 
 
@@ -119,9 +129,9 @@ function username_exist_admin($connection, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
-function create_user($connection, $username, $email, $password, $firstname, $lastname){
-    $query = "INSERT INTO user(username, email, password, firstname, lastname) ";
-    $query .= "VALUES(?, ?, ?, ?, ?) ";
+function create_user($connection, $username, $email, $password, $firstname, $lastname, $image){
+    $query = "INSERT INTO user(username, email, password, firstname, lastname, image) ";
+    $query .= "VALUES(?, ?, ?, ?, ?, ?) ";
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
@@ -131,16 +141,16 @@ function create_user($connection, $username, $email, $password, $firstname, $las
 
     $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $hash_password, $firstname, $lastname);
+    mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $hash_password, $firstname, $lastname, $image);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../signup.php?error=none");
     exit();
 }
 
-function create_user_admin($connection, $username, $email, $password, $firstname, $lastname, $is_superuser){
-    $query = "INSERT INTO user(username, email, password, firstname, lastname, is_superuser) ";
-    $query .= "VALUES(?, ?, ?, ?, ?, ?) ";
+function create_user_admin($connection, $username, $email, $password, $firstname, $lastname, $is_superuser, $image){
+    $query = "INSERT INTO user(username, email, password, firstname, lastname, is_superuser, image) ";
+    $query .= "VALUES(?, ?, ?, ?, ?, ?, ?) ";
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
@@ -150,7 +160,7 @@ function create_user_admin($connection, $username, $email, $password, $firstname
 
     $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssssi", $username, $email, $hash_password, $firstname, $lastname, $is_superuser);
+    mysqli_stmt_bind_param($stmt, "sssssis", $username, $email, $hash_password, $firstname, $lastname, $is_superuser, $image);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../users.php?source=add_user&error=none");

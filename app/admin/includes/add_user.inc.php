@@ -9,22 +9,16 @@ if(isset($_POST['submit'])){
     $password = $_POST["password"];
     $password_repeat = $_POST["password_repeat"];
 
-    // $image = $_FILES['image']['name'];
-    // $image_temp = $_FILES['image']['tmp_name'];
+    $image = $_FILES['image']['name'];
+    $image_temp = $_FILES['image']['tmp_name'];
 
-    // move_uploaded_file($image_temp, "../upload/$image");
+    move_uploaded_file($image_temp, "../upload/$image");
 
     require_once "../../includes/db.inc.php";
     require_once "../../includes/functions.inc.php";
 
     
-
-    if($is_superuser === "0"){
-        $is_superuser === 0;
-    }else if($is_superuser === "1"){
-        $is_superuser === 1;
-    }
-    else{
+    if(role_int($is_superuser) !== false){
         header("Location: ../users.php?source=add_user&error=emptyinputrole");
         exit();
     }
@@ -48,7 +42,7 @@ if(isset($_POST['submit'])){
         header("Location: ../users.php?source=add_user&error=usernameexist");
         exit();
     }
-    create_user_admin($connection,  $username,  $email, $password, $firstname, $lastname, $is_superuser);
+    create_user_admin($connection,  $username,  $email, $password, $firstname, $lastname, $is_superuser, $image);
 }
 else{
     header("Location: ../users.php?add_post");
