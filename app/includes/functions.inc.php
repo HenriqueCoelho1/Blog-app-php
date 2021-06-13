@@ -19,6 +19,16 @@ function empty_input_signup($firstname, $lastname, $username, $email, $password,
     return $result;
 }
 
+function empty_role($is_superuser){
+    $result;
+    if(empty($is_superuser)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
 function invalid_username($username){
     $result;
     if(!preg_match("/^[a-zA-Z0-9]*$/", $username)){
@@ -52,7 +62,7 @@ function password_match($password, $password_repeat){
     return $result;
 }
 
-function username_exist($connection ,$username, $email){
+function username_exist($connection, $username, $email){
     $query = "SELECT * FROM user WHERE username = ? OR email = ? ;";
     $stmt = mysqli_stmt_init($connection);
 

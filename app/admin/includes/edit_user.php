@@ -157,11 +157,10 @@ if(isset($_POST["update_user"])){
                                     
                                 </div>
                             </div>
-
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
-                                        <?php 
+                                    <?php 
                                         if(!empty($user_image)){
                                             echo "<img src='../upload/<?php echo $user_image; ?>' width='100' alt=''/>";
                                         }
@@ -169,6 +168,14 @@ if(isset($_POST["update_user"])){
                                             echo "<img src='../upload/default-user.jpg' width='100' alt=''/>";
                                         }
                                         ?>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">
                                         <label class="label" for="image">Image:</label>
                                         <div class="control">
                                         <div class="file is-medium">

@@ -1,67 +1,133 @@
-<?php
-if(isset($_POST['create_user'])){
-
-    $user_username = $_POST['username'];
-    $user_email = $_POST['email'];
-    $user_password = $_POST['password'];
-    $user_firstname = $_POST['firstname'];
-    $user_lastname = $_POST['lastname'];
-    $user_is_superuser = $_POST['is_superuser'];
-    $user_image = $_FILES['image']['name'];
-    $user_image_temp = $_FILES['image']['tmp_name'];
-    $user_dh_insert = date('dd-mm-yyyy');
-    $rand_salt = '123456abc';
 
 
-    move_uploaded_file($user_image_temp, "../upload/$user_image");
+<section class="hero has-background-black-ter is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="box">
+                    <div class="is-5-tablet is-4-desktop is-3-widescreen">
+                        <form action="add_user.inc.php" method="post">
+                            <h3 class="title is-3 has-text-centered">Add User</h3>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="firstname">First Name:</label>
+                                            <div class="control">
+                                                <input class="input is-info" type="text" placeholder="Your First Name" name="firstname" value="" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                            <label class="label" for="lastname">Last Name:</label>
+                                            <div class="control">
+                                                <input class="input is-info" type="text" placeholder="Your Last Name" name="lastname" value="" />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="username">Username: </label>
+                                            <div class="control">
+                                                <input class="input is-info" type="text" placeholder="Your Username" name="username" value="" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                            <label class="label" for="email">Email: </label>
+                                            <div class="control">
+                                                <input class="input is-info" type="email" placeholder="Your Email" name="email" value="" />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">    
+                                            <label class="label" for="password">Password: </label>
+                                            <div class="control">
+                                                <input class="input is-info" type="password" placeholder="Your Password" name="password" value="" />
+                                            </div>
+                                    </div>
+                                    <div class="field">    
+                                            <label class="label" for="password_repeat">Repeat Password:</label>
+                                            <div class="control">
+                                                <input class="input is-info" type="password" placeholder="Your Password" name="password_repeat" value="" />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    $query_user = "INSERT INTO user (username, email, password, firstname, lastname, is_superuser, image, dh_insert ,rand_salt) VALUES ('{$user_username}', '{$user_email}', '{$user_password}', '{$user_firstname}', '{$user_lastname}', {$user_is_superuser}, '{$user_image}', now(), '{$rand_salt}')";
-    
-    $create_user_query = mysqli_query($connection, $query_user);
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <label class="label" for="is_superuser">User role:</label>    
+                                            <div class="select is_small">
+                                                <select name="is_superuser" id="">
+                                                    <option value="">Select</option>
+                                                    <option value="0">Is User</option>
+                                                    <option value="1">Is Admin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="field">    
+                                            <label class="label" for="image">Image:</label>
+                                            <div class="control">
+                                                <div class="file is-small">
+                                                    <label class="file-label">
+                                                        <input class="file-input" type="file" name="image">
+                                                        <span class="file-cta">
+                                                        <span class="file-icon">
+                                                            <i class="fa fa-upload"></i>
+                                                        </span>
+                                                        <span class="file-label">
+                                                            Choose a file…
+                                                        </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
 
-
-    confirm_query($create_user_query);
-    
-}
-?>
-
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" />
+                            <div class="field">
+                                    <div class="control">
+                                        <button class="button is-info is-medium is-fullwidth" name="submit" value="">Create User</button>
+                                    </div>
+                            </div>
+                            <?php
+                            if(isset($_GET["error"])){
+                                if($_GET["error"] == "emptyinput"){
+                                    echo "<p>Fill in all fields!</p>";
+                                }
+                                else if($_GET["error"] == "invaliduid"){
+                                    echo "<p>Choose a proper username!</p>";
+                                }
+                                else if($_GET["error"] == "invalidemail"){
+                                    echo "<p>Choose a proper email!</p>";
+                                }
+                                else if($_GET["error"] == "passwordsdontmatch"){
+                                    echo "<p>Password doesn't match!</p>";
+                                }
+                                else if($_GET["error"] == "stmtfailed"){
+                                    echo "<p>Something went wrong, try again!</p>";
+                                }
+                                else if($_GET["error"] == "usernametaken"){
+                                    echo "<p>Username already taken!</p>";
+                                }
+                                else if($_GET["error"] == "none"){
+                                    echo "<p>You have signed up!</p>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" name="email" />
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" />
-    </div>
-    <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" class="form-control" name="firstname" placeholder="Your First Name" />
-    </div>
-    <div class="form-group">
-        <label for="lastname">Last Name</label>
-        <input type="text" class="form-control" name="lastname" placeholder="Your Last Name" />
-    </div>
-    <div class="form-group">
-        <!-- <label for="is_superuser">Super User</label>
-        <input type="number" class="form-control" name="is_superuser" placeholder="Super User" /> -->
-        <select name="is_superuser" id="">
-            <option value="">Select</option>
-            <option value="0">Is User</option>
-            <option value="1">Is Admin</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="image">Post Image</label>
-        <input type="file" name="image" />
-    </div>
-
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" name="create_user" value="Publish User" />
-    </div>
-</form>
+</section>
