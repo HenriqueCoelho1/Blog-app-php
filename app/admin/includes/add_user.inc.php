@@ -25,28 +25,27 @@ if(isset($_POST['submit'])){
         $is_superuser === 1;
     }
     else{
-        empty_input_role_admin($is_superuser);
-        header("Location: ../users.php?add_post&error=emptyinputrole");
+        header("Location: ../users.php?source=add_user&error=emptyinputrole");
         exit();
     }
     if(empty_input_signup($firstname, $lastname, $username, $email, $password, $password_repeat) !== false){
-        header("Location: ../users.php?add_post&error=emptyinput");
+        header("Location: ../users.php?source=add_user&error=emptyinput");
         exit();
     }
     if(invalid_username($username) !== false){
-        header("Location: ../users.php?add_post&error=invaliduid");
+        header("Location: ../users.php?source=add_user=&error=invaliduid");
         exit();
     }
     if(invalid_email($email) !== false){
-        header("Location: ../users.php?add_post&error=invalidemail");
+        header("Location: ../users.php?source=add_user&error=invalidemail");
         exit();
     }
     if(password_match($password, $password_repeat) !== false){
-        header("Location: ../users.php?add_post&error=passwordsdontmatch");
+        header("Location: ../users.php?source=add_user&error=passwordsdontmatch");
         exit();
     }
     if(username_exist($connection ,$username, $email) !== false){
-        header("Location: ../users.php?add_post&error=usernameexist");
+        header("Location: ../users.php?source=add_user&error=usernameexist");
         exit();
     }
     create_user_admin($connection,  $username,  $email, $password, $firstname, $lastname, $is_superuser);

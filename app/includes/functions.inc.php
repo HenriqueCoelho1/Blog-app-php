@@ -97,7 +97,7 @@ function username_exist_admin($connection, $username, $email){
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
-        header("Location: ../users.php?add_post&error=stmtfailed");
+        header("Location: ../users.php?source=add_user&error=stmtfailed");
         exit();
     }
 
@@ -144,7 +144,7 @@ function create_user_admin($connection, $username, $email, $password, $firstname
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
-        header("Location: ../users.php?add_post&error=stmtfailed");
+        header("Location: ../users.php?source=add_user&error=stmtfailed");
         exit();
     }
 
@@ -153,7 +153,7 @@ function create_user_admin($connection, $username, $email, $password, $firstname
     mysqli_stmt_bind_param($stmt, "sssssi", $username, $email, $hash_password, $firstname, $lastname, $is_superuser);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("Location: ../users.php?add_post&error=none");
+    header("Location: ../users.php?source=add_user&error=none");
     exit();
 }
 
