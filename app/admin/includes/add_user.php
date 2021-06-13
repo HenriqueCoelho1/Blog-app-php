@@ -6,7 +6,7 @@
             <div class="columns is-centered">
                 <div class="box">
                     <div class="is-5-tablet is-4-desktop is-3-widescreen">
-                        <form action="add_user.inc.php" method="post">
+                        <form action="includes/add_user.inc.php" method="post">
                             <h3 class="title is-3 has-text-centered">Add User</h3>
                             <div class="field is-horizontal">
                                 <div class="field-body">
@@ -103,6 +103,9 @@
                             if(isset($_GET["error"])){
                                 if($_GET["error"] == "emptyinput"){
                                     echo "<p>Fill in all fields!</p>";
+                                }
+                                if($_GET["error"] == "emptyinputrole"){
+                                    echo "<p>Fill the roles!</p>";
                                 }
                                 else if($_GET["error"] == "invaliduid"){
                                     echo "<p>Choose a proper username!</p>";

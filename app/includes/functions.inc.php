@@ -19,15 +19,18 @@ function empty_input_signup($firstname, $lastname, $username, $email, $password,
     return $result;
 }
 
-function empty_role($is_superuser){
+
+function empty_input_role_admin($is_superuser){
     $result;
     if(empty($is_superuser)){
         $result = true;
-    }else{
+    }
+    else{
         $result = false;
     }
     return $result;
 }
+
 
 function invalid_username($username){
     $result;
@@ -89,6 +92,33 @@ function username_exist($connection, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
+function username_exist_admin($connection, $username, $email){
+    $query = "SELECT * FROM user WHERE username = ? OR email = ? ;";
+    $stmt = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: ../users.php?add_post&error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_execute($stmt);
+
+
+    $result_data = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($result_data)){
+        return $row;
+
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function create_user($connection, $username, $email, $password, $firstname, $lastname){
     $query = "INSERT INTO user(username, email, password, firstname, lastname) ";
     $query .= "VALUES(?, ?, ?, ?, ?) ";
@@ -105,6 +135,25 @@ function create_user($connection, $username, $email, $password, $firstname, $las
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../signup.php?error=none");
+    exit();
+}
+
+function create_user_admin($connection, $username, $email, $password, $firstname, $lastname, $is_superuser){
+    $query = "INSERT INTO user(username, email, password, firstname, lastname, is_superuser) ";
+    $query .= "VALUES(?, ?, ?, ?, ?, ?) ";
+    $stmt = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: ../users.php?add_post&error=stmtfailed");
+        exit();
+    }
+
+    $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "sssssi", $username, $email, $hash_password, $firstname, $lastname, $is_superuser);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: ../users.php?add_post&error=none");
     exit();
 }
 
