@@ -9,7 +9,7 @@
             <div class="columns is-centered">
                 <div class="box">
                     <div class="is-5-tablet is-4-desktop is-3-widescreen">
-                        <form action="includes/signup.inc.php" method="post">
+                        <form action="includes/signup.inc.php" method="post" enctype="multipart/form-data">
                             <h3 class="title is-3 has-text-centered">Sign Up</h3>
                             <div class="field is-horizontal">
                                 <div class="field-body">

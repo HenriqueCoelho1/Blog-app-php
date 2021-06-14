@@ -7,11 +7,9 @@ if(isset($_POST['submit'])){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $password_repeat = $_POST["password_repeat"];
-    $image = $_FILES['image']['name'];
-    $image_temp = $_FILES['image']['tmp_name'];
     
-
-    move_uploaded_file($image_temp, "../upload/$image");
+    $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+    $image_temp = file_get_contents($image);
 
     require_once "db.inc.php";
     require_once "functions.inc.php";
@@ -37,7 +35,8 @@ if(isset($_POST['submit'])){
         header("Location: ../signup.php?error=usernameexist");
         exit();
     }
-    create_user($connection,  $username,  $email, $password, $firstname, $lastname, $image);
+    create_user($connection,  $username,  $email, $password, $firstname, $lastname);
+    create_user_image($connection, $image_temp, $image);
 }
 else{
     header("Location: ../signup.php");
