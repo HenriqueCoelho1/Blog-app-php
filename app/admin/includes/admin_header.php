@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+<?php session_start(); ?>
 <?php include "../includes/db.inc.php"; ?>
 <?php include "../includes/functions.inc.php"; ?>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title><?php echo $_SESSION["username"]; ?></title>
 
     <script src="https://use.fontawesome.com/acdb99b9ed.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">

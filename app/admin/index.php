@@ -3,10 +3,11 @@
 
     <div class="column is-11">
         <h1 class="title is-1">
+            <?php echo $_SESSION["first_name"];?>
             Welcome to Admin
         </h1>
         <h2 class="subtitle is-2">
-            Author
+            <?php echo $_SESSION["username"]; ?>
         </h2>
     </div>
     <div class="container p-5">

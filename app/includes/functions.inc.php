@@ -8,6 +8,12 @@ function confirm_query($result){
 
 }
 
+// function current_url(){
+//     $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+//     $valid_url = str_replace("&", "&amp", $url);
+//     return $valid_url;
+// }
+
 function empty_input_signup($firstname, $lastname, $username, $email, $password, $password_repeat){
     $result;
     if(empty($firstname) || empty($lastname) || empty($username) || empty($email)  || empty($password) || empty($password_repeat)){
@@ -80,8 +86,16 @@ function username_exist($connection, $username, $email){
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
-        header("Location: ../signup.php?error=stmtfailed");
-        exit();
+        $uri = $_SERVER["REQUEST_URI"];
+        if($uri === "admin/posts.php?source=add_post"){
+            header("Location: ../users.php?source=add_user&error=stmtfailed");
+            exit();
+        }
+        else if($uri === "signup.php"){
+            header("Location: ../signup.php?error=stmtfailed");
+            exit();
+        }
+        
     }
 
     mysqli_stmt_bind_param($stmt, "ss", $username, $email);
@@ -102,32 +116,7 @@ function username_exist($connection, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
-function username_exist_admin($connection, $username, $email){
-    $query = "SELECT * FROM user WHERE username = ? OR email = ? ;";
-    $stmt = mysqli_stmt_init($connection);
 
-    if(!mysqli_stmt_prepare($stmt, $query)){
-        header("Location: ../users.php?source=add_user&error=stmtfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
-    mysqli_stmt_execute($stmt);
-
-
-    $result_data = mysqli_stmt_get_result($stmt);
-
-    if($row = mysqli_fetch_assoc($result_data)){
-        return $row;
-
-    }
-    else{
-        $result = false;
-        return $result;
-    }
-
-    mysqli_stmt_close($stmt);
-}
 
 function create_user($connection, $username, $email, $password, $firstname, $lastname, $image){
     $query = "INSERT INTO user(username, email, password, firstname, lastname, image) ";
