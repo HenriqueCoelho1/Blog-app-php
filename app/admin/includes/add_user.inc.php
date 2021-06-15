@@ -44,7 +44,6 @@ if(isset($_POST['submit'])){
         exit();
     }
     create_user_admin($connection,  $username,  $email, $password, $firstname, $lastname, $is_superuser, $image);
-    // create_user_image($connection, $image_temp, $image);
 }
 else{
     header("Location: ../users.php?add_post");

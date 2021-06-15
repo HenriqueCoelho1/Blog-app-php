@@ -129,9 +129,9 @@ function username_exist_admin($connection, $username, $email){
     mysqli_stmt_close($stmt);
 }
 
-function create_user($connection, $username, $email, $password, $firstname, $lastname){
-    $query = "INSERT INTO user(username, email, password, firstname, lastname) ";
-    $query .= "VALUES(?, ?, ?, ?, ?) ";
+function create_user($connection, $username, $email, $password, $firstname, $lastname, $image){
+    $query = "INSERT INTO user(username, email, password, firstname, lastname, image) ";
+    $query .= "VALUES(?, ?, ?, ?, ?, ?) ";
     $stmt = mysqli_stmt_init($connection);
 
     if(!mysqli_stmt_prepare($stmt, $query)){
@@ -141,7 +141,7 @@ function create_user($connection, $username, $email, $password, $firstname, $las
 
     $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $hash_password, $firstname, $lastname);
+    mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $hash_password, $firstname, $lastname, $image);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("Location: ../signup.php?error=none");
@@ -167,23 +167,6 @@ function create_user_admin($connection, $username, $email, $password, $firstname
     exit();
 }
 
-function create_user_image($connection, $image_temp, $image){
-    $query = "INSERT INTO user(image) ";
-    $query .= "VALUES(?) ";
-    $stmt = mysqli_stmt_init($connection);
-
-    if(!mysqli_stmt_prepare($stmt, $query)){
-        header("Location: ../users.php?source=add_user&error=stmtfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "s", $image_temp);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    move_uploaded_file($image_temp, "../upload/$image");
-    header("Location: ../users.php?source=add_user&error=none");
-    exit();
-}
 
 function empty_input_login($username, $password){
     $result;

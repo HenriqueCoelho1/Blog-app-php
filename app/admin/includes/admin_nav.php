@@ -59,21 +59,14 @@
                                 </li>
                             </ul>
 
-                            <p class="menu-label">Administration</p>
-
                             <ul class="menu-list">
-                                <li><a class="has-text-white">Team Settings</a></li>
                                 <li>
-                                    <a class="has-text-white">Manage Your Team</a>
-                                    <ul>
-                                        <li><a class="has-text-white">Members</a></li>
-                                        <li><a class="has-text-white">Plugins</a></li>
-                                        <li><a class="has-text-white">Add a member</a></li>
+                                    <a class="has-text-white" href="users.php" data-toggle="collapse" data-target="#posts_dropdown"><span class="icon"><i class="fa fa-user"></i></span> Users</a>
+                                    <ul id="posts_dropdown" class="collapse">
+                                        <li><a class="has-text-white" href="users.php?source=add_user"><span class="icon"><i class="fa fa-user-plus"></i></span> Add Post</a></li>
+                                        <li><a class="has-text-white" href="users.php?source=view_all_users"><span class="icon"><i class="fa fa-users"></i></span> View All Users</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="has-text-white">Invitations</a></li>
-                                <li><a class="has-text-white">Cloud Storage Environment Settings</a></li>
-                                <li><a class="has-text-white">Authentication</a></li>
                             </ul>
 
                             <p class="menu-label">
