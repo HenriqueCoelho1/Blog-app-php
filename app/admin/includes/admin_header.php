@@ -2,6 +2,14 @@
 <?php session_start(); ?>
 <?php include "../includes/db.inc.php"; ?>
 <?php include "../includes/functions.inc.php"; ?>
+<?php
+if(isset($_SESSION["is_superuser"])){
+    if($_SESSION["is_superuser"] !== 1){
+        header("Location: ../index.php");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
