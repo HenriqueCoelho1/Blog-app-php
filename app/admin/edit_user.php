@@ -29,7 +29,6 @@ if(isset($_POST["update_user"])){
     $user_image = $_FILES["image"]["name"];
     $user_image_temp = $_FILES["image"]["tmp_name"];
 
-    $user_rand_salt = $_POST["rand_salt"];
 
 
     move_uploaded_file($user_image_temp, "../upload/$user_image");
@@ -43,22 +42,22 @@ if(isset($_POST["update_user"])){
         }
     }
 
-    $query_update = "UPDATE user SET ";
-    $query_update .= "username = '$user_username', ";
-    $query_update .= "email = '$user_email', ";
-    $query_update .= "password = '$user_password', ";
-    $query_update .= "firstname = '$user_firstname', ";
-    $query_update .= "lastname = '$user_lastname', ";
-    $query_update .= "is_superuser = '$user_is_superuser', ";
-    $query_update .= "image = '$user_image', ";
-    $query_update .= "dh_insert = now() ";
-    $query_update .= "WHERE id  = $edit_user_by_id ";
-    
+    $query = "UPDATE user SET username = ?, email = ?, password = ?, firstname = ?, lastname = ?, is_superuser = ?, image = ? ";
+    $query .= "WHERE id = ?";
+    $stmt = mysqli_stmt_init($connection);
 
-    $update_query = mysqli_query($connection, $query_update);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: users.php?source=edit_user&error=stmtfailed");
+        exit();
+    }
 
-    confirm_query($update_query);
-    header("Location: users.php");
+    $user_hash_password = password_hash($user_password, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "sssssisi", $user_username, $user_email, $user_hash_password, $user_firstname, $user_lastname, $user_is_superuser, $user_image, $edit_user_by_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: users.php?source=add_user&error=none");
+    exit();
 }
 
 
