@@ -13,6 +13,11 @@ function confirm_query($result){
 //     $valid_url = str_replace("&", "&amp", $url);
 //     return $valid_url;
 // }
+// function return_id($id){
+//     if($id === 1){
+//         return $edit_user_by_id;
+//     }
+// }
 
 function empty_input_signup($firstname, $lastname, $username, $email, $password, $password_repeat){
     $result;
@@ -156,6 +161,32 @@ function create_user_admin($connection, $username, $email, $password, $firstname
     exit();
 }
 
+// function edit_user_admin($connection, $id, $username, $email, $password, $firstname, $lastname, $is_superuser, $image){
+
+//     $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+//     $id = return_id()
+
+//     $query_update = "UPDATE user SET ";
+//     $query_update .= "username = '$username', ";
+//     $query_update .= "email = '$email', ";
+//     $query_update .= "password = '$hash_password', ";
+//     $query_update .= "firstname = '$firstname', ";
+//     $query_update .= "lastname = '$lastname', ";
+//     $query_update .= "is_superuser = '$is_superuser', ";
+//     $query_update .= "image = '$image', ";
+//     $query_update .= "dh_insert = now() ";
+//     $query_update .= "WHERE id  = $id ";
+
+//     $update_query = mysqli_query($connection, $query_update);
+
+//     confirm_query($update_query);
+
+//     header("Location: users.php");
+//     exit();
+// }
+
+
 
 function empty_input_login($username, $password){
     $result;
@@ -195,6 +226,7 @@ function login_user($connection, $username, $password){
     }
 
 }
+
 
 
 function insert_category(){

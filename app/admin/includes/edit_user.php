@@ -107,27 +107,26 @@ if(isset($_POST["update_user"])){
                                     <div class="field">    
                                             <label class="label" for="password">Password:</label>
                                             <div class="control">
-                                            <input 
-                                            class="input is-info" 
-                                            type="password" 
-                                            name="password"
-                                            placeholder="User Password" 
-                                            value="<?php echo $user_password; ?>" />
+                                                <input 
+                                                class="input is-info" 
+                                                type="password" 
+                                                name="password"
+                                                placeholder="User Password" 
+                                                value="<?php echo $user_password; ?>" />
                                             </div>
                                     </div>
                                     <div class="field">    
-                                        <label class="label" for="is_superuser">Is Admin?</label>
-                                        <div class="control">
-                                            <div class="select">
-                                            <select name="is_superuser" id="">
-                                                <option value="">Select</option>
-                                                <option value="0">Is User</option>
-                                                <option value="1">Is Admin</option>
-                                            </select>
+                                            <label class="label" for="password">Repeat Password:</label>
+                                            <div class="control">
+                                                <input 
+                                                class="input is-info" 
+                                                type="password" 
+                                                name="password_repeat"
+                                                placeholder="User Password" 
+                                                value="<?php echo $user_password; ?>" />
                                             </div>
-                                            
-                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
 
@@ -157,6 +156,7 @@ if(isset($_POST["update_user"])){
                                     
                                 </div>
                             </div>
+                            <!-- <br />
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
@@ -170,7 +170,7 @@ if(isset($_POST["update_user"])){
                                         ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             <div class="field is-horizontal">
@@ -194,14 +194,16 @@ if(isset($_POST["update_user"])){
                                         </div>
                                     </div>
                                     <div class="field">    
-                                        <label class="label" for="rand_salt">Rand Salt:</label>
+                                        <label class="label" for="is_superuser">Is Admin?</label>
                                         <div class="control">
-                                            <input 
-                                            class="input is-info" 
-                                            type="text" 
-                                            placeholder="rand_salt" 
-                                            name="rand_salt" 
-                                            value="<?php echo $user_rand_salt; ?>" />
+                                            <div class="select">
+                                                <select name="is_superuser" id="">
+                                                    <option value="">Select</option>
+                                                    <option value="0">Is User</option>
+                                                    <option value="1">Is Admin</option>
+                                                </select>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
