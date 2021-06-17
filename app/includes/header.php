@@ -14,8 +14,13 @@ session_start();
 
     <title>Blog 2021</title>
     <script src="https://use.fontawesome.com/acdb99b9ed.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/profile.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="../js/bulma.js"></script>
+    
+    
     
 
     

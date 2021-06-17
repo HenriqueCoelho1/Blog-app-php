@@ -14,9 +14,9 @@ function confirm_query($result){
 //     return $valid_url;
 // }
 // function return_id($id){
-//     if($id === 1){
-//         return $edit_user_by_id;
-//     }
+    
+//     return $id;
+    
 // }
 
 function empty_input_signup($firstname, $lastname, $username, $email, $password, $password_repeat){
