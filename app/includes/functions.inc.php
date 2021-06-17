@@ -221,6 +221,7 @@ function login_user($connection, $username, $password){
         $_SESSION["lastname"] = $username_exists["lastname"];
         $_SESSION["is_superuser"] = $username_exists["is_superuser"];
         $_SESSION["email"] = $username_exists["email"];
+        $_SESSION["image"] = $username_exists["image"];
         header("Location: ../index.php");
         exit();
     }
