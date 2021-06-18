@@ -177,19 +177,19 @@ if(isset($_POST["update_user"])){
                                     <div class="field">
                                         <label class="label" for="image">Image:</label>
                                         <div class="control">
-                                        <div class="file is-medium">
-                                            <label class="file-label">
-                                                <input class="file-input" type="file" name="image">
-                                                <span class="file-cta">
-                                                <span class="file-icon">
-                                                    <i class="fa fa-upload"></i>
-                                                </span>
-                                                <span class="file-label">
-                                                    Choose a file…
-                                                </span>
-                                                </span>
-                                            </label>
-                                        </div>
+                                            <div class="file is-medium">
+                                                <label class="file-label">
+                                                    <input class="file-input" type="file" name="image">
+                                                    <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fa fa-upload"></i>
+                                                    </span>
+                                                    <span class="file-label">
+                                                        Choose a file…
+                                                    </span>
+                                                    </span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="field">    

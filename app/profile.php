@@ -3,91 +3,103 @@
 
 <?php include "includes/nav.php";?>
 
-<div class='columns'>
-    <div class='container profile'>
-        <div class='modal' id='edit-preferences-modal'>
-        <div class='modal-background'></div>
-        <div class='modal-card'>
-            <header class='modal-card-head'>
-            <p class='modal-card-title'>Edit Preferences</p>
-            <button class='delete'></button>
-            </header>
-            <section class='modal-card-body'>
-            <label class='label'>Name</label>
-            <p class='control'>
-                <input class='input' placeholder='Text input' type='text' value="<?php echo $_SESSION['firstname'];  ?>">
-            </p>
-            <label class='label'>Username</label>
-            <p class='control has-icon has-icon-right'>
-                <input class='input' placeholder='Text input' type='text' value='pmillerk'>
-            </p>
-            <label class='label'>Email</label>
-            <p class='control has-icon has-icon-right'>
-                <input class='input' placeholder='Email input' type='text' value='hello@'>
-                <i class='fa fa-warning'></i>
-                <span class='help is-danger'>This email is invalid</span>
-            </p>
-            <div class='control'>
-                <div class='control-label is-pulled-left'>
-                <label class='label'>Date of Birth</label>
-                </div>
-                <span>
-                <span class='select'>
-                    <select>
-                    <option>Month</option>
-                    <option>With options</option>
-                    </select>
-                </span>
-                <span class='select'>
-                    <select>
-                    <option>Day</option>
-                    <option>With options</option>
-                    </select>
-                </span>
-                <span class='select'>
-                    <select>
-                    <option>Year</option>
-                    <option>With options</option>
-                    </select>
-                </span>
-                </span>
+<?php
+if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+    $query = "SELECT * FROM user WHERE username = '{$username}'; ";
+
+    $select_user_profile_query = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($select_user_profile_query)){
+        $user_email = $row["email"];
+        $user_password = $row["password"];
+        $user_firstname = $row["firstname"];
+        $user_lastname = $row["lastname"];
+        $user_is_superuser = $row["is_superuser"];
+        $user_image = $row["image"];
+        $user_dh_insert = $row["dh_insert"];
+
+    }
+}
+?>
+
+<div class="columns">
+    <div class="container profile">
+        <div class="modal" id="edit-preferences-modal">
+        <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Edit Preferences</p>
+                    <button class="delete"></button>
+                </header>
+                    <section class="modal-card-body">
+                        <label class="label">First Name:</label>
+                        <p class="control">
+                            <input class="input" placeholder="Text input" type="text" value="<?php echo $user_firstname;?>">
+                        </p>
+                        <label class="label">Last Name:</label>
+                        <p class="control">
+                            <input class="input" placeholder="Text input" type="text" value="<?php echo $user_lastname;?>">
+                        </p>
+                        <label class="label">Username:</label>
+                        <p class="control has-icon has-icon-right">
+                            <input class="input" placeholder="Text input" disabled type="text" value="<?php echo $username;?>">
+                        </p>
+                        <label class="label">Email:</label>
+                        <p class="control has-icon has-icon-right">
+                            <input class="input" placeholder="Email input" disabled type="text" value="<?php echo $user_email;?>">
+                            <!-- <i class="fa fa-warning"></i>
+                            <span class="help is-danger">This email is invalid</span> -->
+                            
+                        </p>
+                        <br />
+
+                        <div class="control">
+                            <div class="control-label is-pulled-left">
+                                <label class="label">Profile Image</label>
+                            </div>
+                            <div class='column is-2'>
+                                <span class='header-icon user-profile-image'>
+                                    <img alt='' src="../upload/<?php echo $user_image; ?>">
+                                </span>
+                            </div>
+                        </div>
+                    <label class="label">Description</label>
+                    <p class="control">
+                        <textarea class="textarea" placeholder="Describe Yourself!"></textarea>
+                    </p>
+                    <div class="content">
+                        <h1>Optional Information</h1>
+                    </div>
+                    <label class='label'>Phone Number</label>
+                    <p class='control has-icon has-icon-right'>
+                        <input class='input' placeholder='Text input' type='text' value='+1 *** *** 0535'>
+                    </p>
+                    <label class='label'>Work</label>
+                    <p class='control has-icon has-icon-right'>
+                        <input class='input' placeholder='Text input' type='text' value='Greater Washington Publishing'>
+                    </p>
+                    <label class='label'>School</label>
+                    <p class='control has-icon has-icon-right'>
+                        <input class='input' placeholder='Text input' type='text' value='George Mason University'>
+                    </p>
+                    </section>
+                <footer class='modal-card-foot'>
+                <a class='button is-primary modal-save'>Save changes</a>
+                <a class='button modal-cancel'>Cancel</a>
+                </footer>
             </div>
-            <label class='label'>Description</label>
-            <p class='control'>
-                <textarea class='textarea' placeholder='Describe Yourself!'></textarea>
-            </p>
-            <div class='content'>
-                <h1>Optional Information</h1>
-            </div>
-            <label class='label'>Phone Number</label>
-            <p class='control has-icon has-icon-right'>
-                <input class='input' placeholder='Text input' type='text' value='+1 *** *** 0535'>
-            </p>
-            <label class='label'>Work</label>
-            <p class='control has-icon has-icon-right'>
-                <input class='input' placeholder='Text input' type='text' value='Greater Washington Publishing'>
-            </p>
-            <label class='label'>School</label>
-            <p class='control has-icon has-icon-right'>
-                <input class='input' placeholder='Text input' type='text' value='George Mason University'>
-            </p>
-            </section>
-            <footer class='modal-card-foot'>
-            <a class='button is-primary modal-save'>Save changes</a>
-            <a class='button modal-cancel'>Cancel</a>
-            </footer>
-        </div>
         </div>
         <div class='section profile-heading'>
         <div class='columns is-mobile is-multiline'>
             <div class='column is-2'>
-            <span class='header-icon user-profile-image'>
-                <img alt='' src="../upload/<?php echo $_SESSION['image']; ?>">
-            </span>
+                <span class='header-icon user-profile-image'>
+                    <img alt='' src="../upload/<?php echo $user_image; ?>">
+                </span>
             </div>
             <div class='column is-4-tablet is-10-mobile name'>
             <p>
-                <span class='title is-bold'><?php echo $_SESSION["firstname"] . ' ' . $_SESSION["lastname"]?></span>
+                <span class='title is-bold'><?php echo $user_firstname . " " . $user_lastname ?></span>
                 <br>
                 <a class='button is-primary is-outlined' href='#' id='edit-preferences' style='margin: 5px 0'>
                 Edit Preferences
