@@ -1,4 +1,5 @@
 <?php include "includes/db.inc.php"; ?>
+<?php ob_start();?>
 <?php include "includes/header.php";?>
 
 <?php include "includes/nav.php";?>
@@ -18,10 +19,58 @@ if(isset($_SESSION["username"])){
         $user_is_superuser = $row["is_superuser"];
         $user_image = $row["image"];
         $user_dh_insert = $row["dh_insert"];
+        $user_description = $row["description"];
 
     }
 }
 ?>
+
+<?php 
+
+if(isset($_POST["update_user"])){
+    $user_firstname = $_POST["firstname"];
+    $user_lastname = $_POST["lastname"];
+    $user_password = $_POST["password"];
+    $user_description = $_POST["description"];
+
+    $user_image = $_FILES["image"]["name"];
+    $user_image_temp = $_FILES["image"]["tmp_name"];
+
+
+
+    move_uploaded_file($user_image_temp, "../upload/$user_image");
+
+    if(empty($user_image)){
+        $query_image = "SELECT * FROM user WHERE username = '$username'";
+        $select_image = mysqli_query($connection, $query_image);
+
+        while($row = mysqli_fetch_assoc($select_image)){
+            $user_image = $row["image"];
+        }
+    }
+
+    $query = "UPDATE user SET password = ?, firstname = ?, lastname = ?, image = ?, description = ? ";
+    $query .= "WHERE username = ?";
+    $stmt = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("Location: profile.php?error=stmtfailed");
+        exit();
+    }
+
+    $user_hash_password = password_hash($user_password, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "ssssss", $user_hash_password, $user_firstname, $user_lastname, $user_image, $user_description, $username);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: profile.php");
+    exit();
+}
+
+
+
+?>
+
 
 <div class="columns">
     <div class="container profile">
@@ -33,13 +82,14 @@ if(isset($_SESSION["username"])){
                     <button class="delete"></button>
                 </header>
                     <section class="modal-card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
                         <label class="label">First Name:</label>
                         <p class="control">
-                            <input class="input" placeholder="Text input" type="text" value="<?php echo $user_firstname;?>">
+                            <input class="input" placeholder="Text input" type="text" name="firstname" value="<?php echo $user_firstname;?>">
                         </p>
                         <label class="label">Last Name:</label>
                         <p class="control">
-                            <input class="input" placeholder="Text input" type="text" value="<?php echo $user_lastname;?>">
+                            <input class="input" placeholder="Text input" type="text" name="lastname" value="<?php echo $user_lastname;?>">
                         </p>
                         <label class="label">Username:</label>
                         <p class="control has-icon has-icon-right">
@@ -51,6 +101,14 @@ if(isset($_SESSION["username"])){
                             <!-- <i class="fa fa-warning"></i>
                             <span class="help is-danger">This email is invalid</span> -->
                             
+                        </p>
+                        <label class="label">Password:</label>
+                        <p class="control has-icon has-icon-right">
+                            <input class="input" placeholder="Your Password" type="password" name="password" value="<?php echo $user_password;?>">
+                        </p>
+                        <label class="label">Repeat Password:</label>
+                        <p class="control has-icon has-icon-right">
+                            <input class="input" placeholder="Repeat Your Password" name="repeat_password" type="password" value="<?php echo $user_password;?>">
                         </p>
                         <br />
 
@@ -64,32 +122,41 @@ if(isset($_SESSION["username"])){
                                 </span>
                             </div>
                         </div>
+                        <div class="control">
+                            <div class="file">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" name="image">
+                                    <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">
+                                        Choose a file…
+                                    </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
                     <label class="label">Description</label>
                     <p class="control">
-                        <textarea class="textarea" placeholder="Describe Yourself!"></textarea>
+                        <?php if($user_description === null){
+                            echo "<textarea class='textarea' name='description' placeholder='Describe Yourself!'></textarea>";
+                        }else{
+                            echo "<textarea class='textarea' name='description' placeholder='Describe Yourself!'>$user_description</textarea>";
+                        }
+                        
+                        ?>
                     </p>
-                    <div class="content">
-                        <h1>Optional Information</h1>
-                    </div>
-                    <label class='label'>Phone Number</label>
-                    <p class='control has-icon has-icon-right'>
-                        <input class='input' placeholder='Text input' type='text' value='+1 *** *** 0535'>
-                    </p>
-                    <label class='label'>Work</label>
-                    <p class='control has-icon has-icon-right'>
-                        <input class='input' placeholder='Text input' type='text' value='Greater Washington Publishing'>
-                    </p>
-                    <label class='label'>School</label>
-                    <p class='control has-icon has-icon-right'>
-                        <input class='input' placeholder='Text input' type='text' value='George Mason University'>
-                    </p>
+                    <footer class="modal-card-foot">
+                        <button class="button is-primary modal-save" type="submit" name="update_user">Save changes</button>
+                        <a class="button modal-cancel">Cancel</a>
+                    </footer>
+                    </form>
                     </section>
-                <footer class='modal-card-foot'>
-                <a class='button is-primary modal-save'>Save changes</a>
-                <a class='button modal-cancel'>Cancel</a>
-                </footer>
+                    
             </div>
         </div>
+        
         <div class='section profile-heading'>
         <div class='columns is-mobile is-multiline'>
             <div class='column is-2'>
@@ -107,7 +174,13 @@ if(isset($_SESSION["username"])){
                 <br>
             </p>
             <p class='tagline'>
-                The users profile bio would go here, of course. It could be two lines or more or whatever. We should probably limit the amount of characters to ~500 at most though.
+            <?php 
+            if($user_description === null){
+                echo "-";
+            }else{
+                echo $user_description;
+            }
+            ?>
             </p>
             </div>
             <div class='column is-2-tablet is-4-mobile has-text-centered'>

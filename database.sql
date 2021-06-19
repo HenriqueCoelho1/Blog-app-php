@@ -13,8 +13,9 @@ CREATE TABLE user (
     firstname VARCHAR(200) NOT NULL,
     lastname VARCHAR(200) NOT NULL,
     is_superuser TINYINT(1) NOT NULL DEFAULT 0,
-    image TEXT NOT NULL,
-    rand_salt VARCHAR(255),
+    image TEXT,
+    description TEXT,
+    dh_insert DATETIME DEFAULT NOW(),
     PRIMARY KEY(id)
 );
 
@@ -57,7 +58,9 @@ CREATE TABLE comment(
 -- DELETE FROM post WHERE id = 1;
 -- ALTER TABLE post MODIFY comment_count INTEGER NOT NULL;
 -- ALTER TABLE post MODIFY status VARCHAR(255) DEFAULT 'Unplubished' NOT NULL;
--- ALTER TABLE user MODIFY rand_salt VARCHAR(255);
+-- ALTER TABLE user MODIFY image TEXT;
+-- ALTER TABLE user MODIFY description TEXT;
+-- ALTER TABLE user RENAME COLUMN rand_salt TO description;
 -- SELECT * FROM `category`;
 -- SELECT * FROM `post`;
 -- INSERT INTO category SET id = 2, title = 'Bootstrap';
