@@ -157,23 +157,23 @@ if(isset($_POST["update_user"])){
             </div>
         </div>
         
-        <div class='section profile-heading'>
-        <div class='columns is-mobile is-multiline'>
-            <div class='column is-2'>
-                <span class='header-icon user-profile-image'>
-                    <img alt='' src="../upload/<?php echo $user_image; ?>">
+        <div class="section profile-heading">
+        <div class="columns is-mobile is-multiline">
+            <div class="column is-2">
+                <span class="header-icon user-profile-image">
+                    <img alt="" src="../upload/<?php echo $user_image; ?>">
                 </span>
             </div>
-            <div class='column is-4-tablet is-10-mobile name'>
+            <div class="column is-4-tablet is-10-mobile name">
             <p>
-                <span class='title is-bold'><?php echo $user_firstname . " " . $user_lastname ?></span>
+                <span class="title is-bold"><?php echo $user_firstname . " " . $user_lastname ?></span>
                 <br>
-                <a class='button is-primary is-outlined' href='#' id='edit-preferences' style='margin: 5px 0'>
+                <a class="button is-primary is-outlined" href="#" id="edit-preferences" style="margin: 5px 0">
                 Edit Preferences
                 </a>
                 <br>
             </p>
-            <p class='tagline'>
+            <p class="tagline">
             <?php 
             if($user_description === null){
                 echo "-";
@@ -183,51 +183,51 @@ if(isset($_POST["update_user"])){
             ?>
             </p>
             </div>
-            <div class='column is-2-tablet is-4-mobile has-text-centered'>
-            <p class='stat-val'>30</p>
-            <p class='stat-key'>searches</p>
+            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <p class="stat-val">30</p>
+            <p class="stat-key">searches</p>
             </div>
-            <div class='column is-2-tablet is-4-mobile has-text-centered'>
-            <p class='stat-val'>10</p>
-            <p class='stat-key'>likes</p>
+            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <p class="stat-val">10</p>
+            <p class="stat-key">likes</p>
             </div>
-            <div class='column is-2-tablet is-4-mobile has-text-centered'>
-            <p class='stat-val'>3</p>
-            <p class='stat-key'>lists</p>
+            <div class="column is-2-tablet is-4-mobile has-text-centered">
+            <p class="stat-val">3</p>
+            <p class="stat-key">lists</p>
             </div>
         </div>
         </div>
-        <div class='profile-options is-fullwidth'>
-        <div class='tabs is-fullwidth is-medium'>
+        <div class="profile-options is-fullwidth">
+        <div class="tabs is-fullwidth is-medium">
             <ul>
-            <li class='link'>
+            <li class="link">
                 <a>
-                <span class='icon'>
-                    <i class='fa fa-list'></i>
+                <span class="icon">
+                    <i class="fa fa-list"></i>
                 </span>
                 <span>My Lists</span>
                 </a>
             </li>
-            <li class='link is-active'>
+            <li class="link is-active">
                 <a>
-                <span class='icon'>
-                    <i class='fa fa-thumbs-up'></i>
+                <span class="icon">
+                    <i class="fa fa-thumbs-up"></i>
                 </span>
                 <span>My Likes</span>
                 </a>
             </li>
-            <li class='link'>
+            <li class="link">
                 <a>
-                <span class='icon'>
-                    <i class='fa fa-search'></i>
+                <span class="icon">
+                    <i class="fa fa-search"></i>
                 </span>
                 <span>My Searches</span>
                 </a>
             </li>
-            <li class='link'>
+            <li class="link">
                 <a>
-                <span class='icon'>
-                    <i class='fa fa-balance-scale'></i>
+                <span class="icon">
+                    <i class="fa fa-balance-scale"></i>
                 </span>
                 <span>Compare</span>
                 </a>
@@ -235,21 +235,21 @@ if(isset($_POST["update_user"])){
             </ul>
         </div>
         </div>
-        <div class='box' style='border-radius: 0px;'>
+        <div class="box" style="border-radius: 0px;">
         <!-- Main container -->
-        <div class='columns'>
-            <div class='column is-2-tablet user-property-count has-text-centered'>
-            <p class='subtitle is-5'>
+        <div class="columns">
+            <div class="column is-2-tablet user-property-count has-text-centered">
+            <p class="subtitle is-5">
                 <strong></strong>
                 123
                 <br>
                 properties
             </p>
             </div>
-            <div class='column is-8'>
-            <p class='control has-addons'>
-                <input class='input' placeholder='Search your liked properties' style='width: 100% !important' type='text'>
-                <button class='button'>
+            <div class="column is-8">
+            <p class="control has-addons">
+                <input class="input" placeholder="Search your liked properties" style="width: 100% !important" type="text">
+                <button class="button">
                 Search
                 </button>
             </p>
