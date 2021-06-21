@@ -9,12 +9,10 @@ $select_user_by_id =  mysqli_query($connection, $query_single_user);
 while($row = mysqli_fetch_assoc($select_user_by_id)){
     $user_username = $row["username"];
     $user_email = $row["email"];
-    $user_password = $row["password"];
     $user_firstname = $row["firstname"];
     $user_lastname = $row["lastname"];
     $user_is_superuser = $row["is_superuser"];
     $user_image = $row["image"];
-    $user_rand_salt = $row["rand_salt"];
     $user_dh_insert = $row["dh_insert"];
 }
 
@@ -111,7 +109,7 @@ if(isset($_POST["update_user"])){
                                                 type="password" 
                                                 name="password"
                                                 placeholder="User Password" 
-                                                value="<?php echo $user_password; ?>" />
+                                                value="" />
                                             </div>
                                     </div>
                                     <div class="field">    
@@ -122,7 +120,7 @@ if(isset($_POST["update_user"])){
                                                 type="password" 
                                                 name="password_repeat"
                                                 placeholder="User Password" 
-                                                value="<?php echo $user_password; ?>" />
+                                                value="" />
                                             </div>
                                     </div>
                                     

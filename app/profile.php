@@ -13,7 +13,6 @@ if(isset($_SESSION["username"])){
 
     while($row = mysqli_fetch_array($select_user_profile_query)){
         $user_email = $row["email"];
-        $user_password = $row["password"];
         $user_firstname = $row["firstname"];
         $user_lastname = $row["lastname"];
         $user_is_superuser = $row["is_superuser"];
@@ -104,11 +103,11 @@ if(isset($_POST["update_user"])){
                         </p>
                         <label class="label">Password:</label>
                         <p class="control has-icon has-icon-right">
-                            <input class="input" placeholder="Your Password" type="password" name="password" value="<?php echo $user_password;?>">
+                            <input class="input" placeholder="Your Password" type="password" name="password">
                         </p>
                         <label class="label">Repeat Password:</label>
                         <p class="control has-icon has-icon-right">
-                            <input class="input" placeholder="Repeat Your Password" name="repeat_password" type="password" value="<?php echo $user_password;?>">
+                            <input class="input" placeholder="Repeat Your Password" type="password" name="repeat_password" >
                         </p>
                         <br />
 
