@@ -38,7 +38,14 @@
                 </div>
                 
             </div>
-
+            
+            <?php
+            if(isset($_SESSION["is_superuser"])){
+                if($_SESSION["is_superuser"] === 1){
+                    echo "<a href='admin' class='navbar-item'>Admin</a>";
+                }   
+            }
+            ?>
         </div>
 
         <div class="navbar-end">
