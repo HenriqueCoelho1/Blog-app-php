@@ -41,6 +41,18 @@ if(isset($_SESSION["username"])){
                         $post_dh_insert = $row['dh_insert'];
                         $post_title = $row['title'];
                     }
+
+                    $query_all_users = "SELECT * FROM user";
+                    $select_all_users = mysqli_query($connection, $query_all_users);
+                    $user_counts = mysqli_num_rows($select_all_users);
+
+                    $query_all_admin_users = "SELECT is_superuser FROM user WHERE is_superuser = 1";
+                    $select_all_admin_users = mysqli_query($connection, $query_all_admin_users);
+                    $user_admin_counts = mysqli_num_rows($select_all_admin_users);
+
+                    $query_all_normal_users = "SELECT is_superuser FROM user WHERE is_superuser = 0";
+                    $select_all_normal_users = mysqli_query($connection, $query_all_normal_users);
+                    $user_normal_counts = mysqli_num_rows($select_all_normal_users);
                     ?>
                     <div class="title"><?php echo $post_counts;?></div>
                     <div class="level">
@@ -67,19 +79,19 @@ if(isset($_SESSION["username"])){
             </div>
             <div class="column">
             <div class="box">
-                <div class="heading">Revenue / Expenses</div>
-                <div class="title">55% / 45%</div>
+                <div class="heading">Total Of All Users</div>
+                <div class="title"><?php echo $user_counts; ?></div>
                 <div class="level">
                 <div class="level-item">
                     <div class="">
-                    <div class="heading">Rev Prod $</div>
-                    <div class="title is-5">30%</div>
+                    <div class="heading">Admins</div>
+                    <div class="title is-5"><?php echo $user_admin_counts ?></div>
                     </div>
                 </div>
                 <div class="level-item">
                     <div class="">
-                    <div class="heading">Rev Serv $</div>
-                    <div class="title is-5">25%</div>
+                    <div class="heading">Users</div>
+                    <div class="title is-5"><?php echo $user_normal_counts?></div>
                     </div>
                 </div>
                 <div class="level-item">
