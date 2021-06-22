@@ -15,6 +15,38 @@ if(isset($_SESSION["username"])){
 }
 
 ?>
+<?php $query_all_posts = "SELECT * FROM post";
+$select_all_posts = mysqli_query($connection, $query_all_posts);
+$post_counts = mysqli_num_rows($select_all_posts);
+
+$query_by_last = "SELECT id, dh_insert, title FROM post ORDER BY dh_insert DESC LIMIT 1";
+$select_by_last = mysqli_query($connection, $query_by_last);
+while($row = mysqli_fetch_array($select_by_last)){
+    $post_id = $row['id'];
+    $post_dh_insert = $row['dh_insert'];
+    $post_title = $row['title'];
+}
+
+$query_all_users = "SELECT * FROM user";
+$select_all_users = mysqli_query($connection, $query_all_users);
+$user_counts = mysqli_num_rows($select_all_users);
+
+$query_all_admin_users = "SELECT is_superuser FROM user WHERE is_superuser = 1";
+$select_all_admin_users = mysqli_query($connection, $query_all_admin_users);
+$user_admin_counts = mysqli_num_rows($select_all_admin_users);
+
+$query_all_normal_users = "SELECT is_superuser FROM user WHERE is_superuser = 0";
+$select_all_normal_users = mysqli_query($connection, $query_all_normal_users);
+$user_normal_counts = mysqli_num_rows($select_all_normal_users);
+
+$query_all_comments = "SELECT * from comment";
+$select_all_comments = mysqli_query($connection, $query_all_comments);
+$comment_counts = mysqli_num_rows($select_all_comments);
+
+$query_all_categories = "SELECT * from category";
+$select_all_categories = mysqli_query($connection, $query_all_categories);
+$categories_counts = mysqli_num_rows($select_all_categories);
+?>
 
 
 <main class="column">
@@ -30,30 +62,6 @@ if(isset($_SESSION["username"])){
             <div class="column">
                 <div class="box">
                     <div class="heading">Total Posts</div>
-                    <?php $query_all_posts = "SELECT * FROM post";
-                    $select_all_posts = mysqli_query($connection, $query_all_posts);
-                    $post_counts = mysqli_num_rows($select_all_posts);
-
-                    $query_by_last = "SELECT id, dh_insert, title FROM post ORDER BY dh_insert DESC LIMIT 1";
-                    $select_by_last = mysqli_query($connection, $query_by_last);
-                    while($row = mysqli_fetch_array($select_by_last)){
-                        $post_id = $row['id'];
-                        $post_dh_insert = $row['dh_insert'];
-                        $post_title = $row['title'];
-                    }
-
-                    $query_all_users = "SELECT * FROM user";
-                    $select_all_users = mysqli_query($connection, $query_all_users);
-                    $user_counts = mysqli_num_rows($select_all_users);
-
-                    $query_all_admin_users = "SELECT is_superuser FROM user WHERE is_superuser = 1";
-                    $select_all_admin_users = mysqli_query($connection, $query_all_admin_users);
-                    $user_admin_counts = mysqli_num_rows($select_all_admin_users);
-
-                    $query_all_normal_users = "SELECT is_superuser FROM user WHERE is_superuser = 0";
-                    $select_all_normal_users = mysqli_query($connection, $query_all_normal_users);
-                    $user_normal_counts = mysqli_num_rows($select_all_normal_users);
-                    ?>
                     <div class="title"><?php echo $post_counts;?></div>
                     <div class="level">
                         <div class="level-item">
@@ -105,8 +113,8 @@ if(isset($_SESSION["username"])){
             </div>
             <div class="column">
             <div class="box">
-                <div class="heading">Feedback Activity</div>
-                <div class="title">78% &uarr;</div>
+                <div class="heading">Total Comments</div>
+                <div class="title"><?php echo $comment_counts; ?></div>
                 <div class="level">
                 <div class="level-item">
                     <div class="">
@@ -131,8 +139,8 @@ if(isset($_SESSION["username"])){
             </div>
             <div class="column">
             <div class="box">
-                <div class="heading">Orders / Returns</div>
-                <div class="title">75% / 25%</div>
+                <div class="heading">Total Categories</div>
+                <div class="title"><?php echo $categories_counts ?></div>
                 <div class="level">
                 <div class="level-item">
                     <div class="">
