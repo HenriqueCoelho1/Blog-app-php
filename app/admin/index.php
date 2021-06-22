@@ -29,13 +29,25 @@ if(isset($_SESSION["username"])){
         <div class="columns is-multiline">
             <div class="column">
                 <div class="box">
-                    <div class="heading">Top Seller Total</div>
-                    <div class="title">56,950</div>
+                    <div class="heading">Total Posts</div>
+                    <?php $query_all_posts = "SELECT * FROM post";
+                    $select_all_posts = mysqli_query($connection, $query_all_posts);
+                    $post_counts = mysqli_num_rows($select_all_posts);
+
+                    $query_by_last = "SELECT id, dh_insert, title FROM post ORDER BY dh_insert DESC LIMIT 1";
+                    $select_by_last = mysqli_query($connection, $query_by_last);
+                    while($row = mysqli_fetch_array($select_by_last)){
+                        $post_id = $row['id'];
+                        $post_dh_insert = $row['dh_insert'];
+                        $post_title = $row['title'];
+                    }
+                    ?>
+                    <div class="title"><?php echo $post_counts;?></div>
                     <div class="level">
                         <div class="level-item">
                             <div class="">
-                                <div class="heading">Sales $</div>
-                                <div class="title is-5">250,000</div>
+                                <div class="heading">Last Post</div>
+                                <div class="title is-5"><a href="../post.php?p_id=<?php echo $post_id ?>"><?php echo $post_title; ?></a></div>
                             </div>
                         </div>
                         <div class="level-item">
