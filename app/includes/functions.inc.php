@@ -369,18 +369,16 @@ function find_all_comments(){
     $select_comment =  mysqli_query($connection, $query_comment);
     while($row = mysqli_fetch_assoc($select_comment)){
         $comment_id = $row['id'];
-        $comment_author = $row['author'];
+        $comment_user = $row['user'];
         $comment_email = $row['email'];
         $comment_content = $row['content'];
-        $comment_status = $row['status'];
         $comment_dh_insert = $row['dh_insert'];
         $comment_post = $row['post'];
         echo "<tr>";
         echo "<td>{$comment_id}</td>";
-        echo "<td>{$comment_author}</td>";
+        echo "<td>{$comment_user}</td>";
         echo "<td>{$comment_email}</td>";
         echo "<td>{$comment_content}</td>";
-        echo "<td>{$comment_status}</td>";
         echo "<td>{$comment_dh_insert}</td>";
 
         $query_post_comment = "SELECT * FROM post WHERE id = $comment_post ";

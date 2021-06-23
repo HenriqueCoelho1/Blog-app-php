@@ -5,7 +5,6 @@
             <th>Author</th>
             <th>Email</th>
             <th>Content</th>
-            <th>Status</th>
             <th>Date</th>
             <th>In Response To</th>
             <th>Approve</th>
