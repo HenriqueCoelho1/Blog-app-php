@@ -4,15 +4,17 @@
 <?php include "includes/nav.php";?>
 
     
-    
 
+<section class="hero has-background-white-ter is-fullheight">
+    <div class="hero-body">
     
-    <div class="container">
+    <div class="container p-2">
 
         <div class="row">
+            <div class="columns is-centered">
 
             
-            <div class="col-md-8">
+            <div class="is-6-desktop">
             <?php
                 if(isset($_GET['p_id'])){
                     $selected_id_post = $_GET['p_id'];
@@ -30,30 +32,146 @@
                     
                     
             ?>
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
+                <h1 class="title is-1"><?php echo $post_title ?></h1>
+                <h5 class="subtitle is-5">
+                    by <a href="index.php"><?php echo $post_author;?></a>
+                </h5>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_dh_insert;?></p>
+                <a href="post.php?p_id=<?php echo $post_id;?>">
+                    <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="" />
+                </a>
+                
+
+                <hr>
+                <p><?php echo $post_content?></p>
+            <?php
+                
+            }
+            ?>
 
                 
-                <h2>
-                    <a href="#"><?php echo $post_title;?></a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php"><?php echo $post_author;?></a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_dh_insert;?></p>
-                <hr>
-                <img class="img-responsive" src="images/<?php echo $post_image;?>" alt="">
-                <hr>
-                <p><?php echo $post_content;?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                <hr>
-                <?php
-                    }
-                ?>
-                <!-- Blog Comments -->
+                
+                
+                
+
+                
+            </div>
+
+            </div>
+            </div>
+            
+            
+
+        </div>
+
+    </div>   
+
+        <hr>
+        <div class="columns is-centered">
+            <div class="column is-9">
+                <div class="content">
+                    <h4 class="title is-4 is-primary">Comment Section</h4>
+                    <div class="box">
+                        <br />
+                        <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div class="field">
+                            <p class="control">
+                                <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                            </p>
+                            </div>
+                            <div class="field">
+                            <p class="control">
+                                <button class="button">Post comment</button>
+                            </p>
+                            </div>
+                        </div>
+                        </article>
+
+                        <!-- <h4 class="title is-3">const</h4> -->
+                        <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                            <p>
+                                <strong>Barbara Middleton</strong>
+                                <br>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                                <br>
+                                <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                            </p>
+                            </div>
+
+                            <!-- <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                    <p>
+                                        <strong>Sean Brown</strong>
+                                        <br>
+                                        Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
+                                        <br>
+                                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                                    </p>
+                                    </div>
+
+                                    <article class="media">
+                                    Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet nec massa.
+                                    </article>
+
+                                    <article class="media">
+                                    Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                                    </article>
+                                </div>
+                            </article> -->
+                            <!-- <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                    <p>
+                                        <strong>Kayli Eunice </strong>
+                                        <br>
+                                        Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                                        <br>
+                                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                                    </p>
+                                    </div>
+                                </div>
+                            </article> -->
+
+                        </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</section>
+
+
+    
+
+        
+
                 <?php
                 if(isset($_POST['create_comment'])){
                     $selected_id_post = $_GET['p_id'];
@@ -75,34 +193,12 @@
                         
                 }
                 ?>
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form action="" method="post" role="form">
-                        <div class="form-group">
-                            <label for="author">Author</label>
-                            <input type="text" class="form-control" name="author"  />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email"  />
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Your comment</label>
-                            <textarea type="text" 
-                            class="form-control" 
-                            name="content"></textarea>
-                        </div>
-                        <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
 
-                <hr>
+                
                 
 
                 <?php
                 $query_comments_post = "SELECT * FROM comment WHERE post = {$selected_id_post} ";
-                $query_comments_post .= "AND status = 'Approved' ";
                 $query_comments_post .= "ORDER BY id DESC";
                 $select_comment_query = mysqli_query($connection, $query_comments_post);
                 if(!$select_comment_query){
@@ -114,30 +210,10 @@
                     $comment_author = $row['author'];
                 ?>
 
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment_author; ?>
-                            <small><?php echo $comment_dh_insert; ?></small>
-                        </h4>
-                        <?php echo $comment_content; ?>
-                    </div>
-                </div>
+                
+
+
+
                 <?php
                 }
                 ?>
-            </div>
-            <?php include "includes/sidebar.php";?>
-            
-            
-
-        </div>
-
-        
-
-        <hr>
-
-        <!-- Footer -->
-        <?php include "includes/footer.php";?>
