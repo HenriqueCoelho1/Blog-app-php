@@ -2,7 +2,7 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         
-        <a class="navbar-item">
+        <a class="navbar-item" href="index.php">
             <h2>CMS Blog 2021</h2>
         </a>
     
@@ -15,7 +15,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item" href="index.php">Home</a>
             <a class="navbar-item" href="https://github.com/HenriqueCoelho1/" target="_blank">My Github <span class="icon is-left"><i class="fa fa-github"></i></span>
             </a>
 
