@@ -21,9 +21,6 @@ if(isset($_POST["create_comment"])){
     $create_comment_query = mysqli_query($connection, $query_comment);
 
     if($create_comment_query){
-        $query_comment_count = "UPDATE post SET comment_count = comment_count + 1 ";
-        $query_comment_count .= "WHERE id = $selected_id_post ";
-        $update_comment_count = mysqli_query($connection, $query_comment_count);
         header("Location: post.php?p_id=$selected_id_post");
         exit();
     }
